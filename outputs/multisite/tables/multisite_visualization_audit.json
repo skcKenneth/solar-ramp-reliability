@@ -1,0 +1,40 @@
+{
+  "figures": [
+    {
+      "figure": "fig20_confirmation_overview.png",
+      "pdf_vector": true,
+      "svg_vector": true,
+      "png_bytes": 172439,
+      "status": "pass"
+    },
+    {
+      "figure": "fig20_station_worst_undercoverage.png",
+      "pdf_vector": true,
+      "svg_vector": true,
+      "png_bytes": 134125,
+      "status": "pass"
+    },
+    {
+      "figure": "fig21_station_aware_improvement.png",
+      "pdf_vector": true,
+      "svg_vector": true,
+      "png_bytes": 131559,
+      "status": "pass"
+    },
+    {
+      "figure": "fig22_oracle_conditioning_gap.png",
+      "pdf_vector": true,
+      "svg_vector": true,
+      "png_bytes": 144697,
+      "status": "pass"
+    },
+    {
+      "figure": "fig23_ramp_direction_reliability.png",
+      "pdf_vector": true,
+      "svg_vector": true,
+      "png_bytes": 55158,
+      "status": "pass"
+    }
+  ],
+  "all_pass": true
+}

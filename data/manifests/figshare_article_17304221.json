@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "http_status": 200,
+    "final_url": "https://api.figshare.com/v2/articles/17304221",
+    "content_type": "application/json",
+    "bytes": 4794,
+    "elapsed_seconds": 1.324
+  },
+  "payload": {
+    "files": [
+      {
+        "id": 35215009,
+        "name": "data_processed.rar",
+        "size": 74468298,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215009",
+        "supplied_md5": "3d4eeb038abbef53cbddaff517aac37d",
+        "computed_md5": "3d4eeb038abbef53cbddaff517aac37d",
+        "mimetype": "application/x-rar"
+      },
+      {
+        "id": 35215012,
+        "name": "data_original.rar",
+        "size": 77966660,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215012",
+        "supplied_md5": "ee0fa9776d51bc9796dc4d19236b9b17",
+        "computed_md5": "ee0fa9776d51bc9796dc4d19236b9b17",
+        "mimetype": "application/x-rar"
+      },
+      {
+        "id": 35215033,
+        "name": "Wind farm site 1 (Nominal capacity-99MW).xlsx",
+        "size": 8299552,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215033",
+        "supplied_md5": "de4cf4019051d5c0b2663481cb016a9a",
+        "computed_md5": "de4cf4019051d5c0b2663481cb016a9a",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      },
+      {
+        "id": 35215039,
+        "name": "Solar station site 1 (Nominal capacity-50MW).xlsx",
+        "size": 3738807,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215039",
+        "supplied_md5": "24ae37194210456e71c2796a1ee51ff5",
+        "computed_md5": "24ae37194210456e71c2796a1ee51ff5",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      },
+      {
+        "id": 35215042,
+        "name": "WF_correlation.png",
+        "size": 346621,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215042",
+        "supplied_md5": "107b8816d3ce2806200469fd81667cf2",
+        "computed_md5": "107b8816d3ce2806200469fd81667cf2",
+        "mimetype": "image/png"
+      },
+      {
+        "id": 35215045,
+        "name": "SS_correlation.png",
+        "size": 191180,
+        "is_link_only": false,
+        "download_url": "https://ndownloader.figshare.com/files/35215045",
+        "supplied_md5": "39568d5797f92cebd44be189001bd60d",
+        "computed_md5": "39568d5797f92cebd44be189001bd60d",
+        "mimetype": "image/png"
+      }
+    ],
+    "folder_structure": {},
+    "authors": [
+      {
+        "id": 11859953,
+        "full_name": "Yongbao Chen",
+        "first_name": "Yongbao",
+        "last_name": "Chen",
+        "is_active": true,
+        "url_name": "Yongbao_Chen",
+        "orcid_id": ""
+      }
+    ],
+    "custom_fields": [],
+    "figshare_url": "https://figshare.com/articles/dataset/Solar_and_wind_power_data_from_the_Chinese_State_Grid_Renewable_Energy_Generation_Forecasting_Competition/17304221",
+    "download_disabled": false,
+    "description": "Two years (2019, 2020) on-site data with time granularity of 15 minutes of six wind farms and eight solar stations in China was recorded, which includes weather conditions and power generation information.",
+    "funding": null,
+    "funding_list": [],
+    "version": 4,
+    "status": "public",
+    "size": 165011118,
+    "created_date": "2022-05-22T02:22:52Z",
+    "modified_date": "2022-05-22T02:22:53Z",
+    "is_public": true,
+    "is_confidential": false,
+    "is_metadata_record": false,
+    "confidential_reason": "",
+    "metadata_reason": "",
+    "license": {
+      "value": 2,
+      "name": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "tags": [
+      "Solar energy",
+      "Wind power",
+      "Renewable energy generation",
+      "Renewable Power and Energy Systems Engineering (excl. Solar Cells)"
+    ],
+    "keywords": [
+      "Solar energy",
+      "Wind power",
+      "Renewable energy generation",
+      "Renewable Power and Energy Systems Engineering (excl. Solar Cells)"
+    ],
+    "categories": [
+      {
+        "id": 26464,
+        "title": "Electrical energy generation (incl. renewables, excl. photovoltaics)",
+        "parent_id": 26455,
+        "path": "/26212/26455/26464",
+        "source_id": "400803",
+        "taxonomy_id": 100
+      }
+    ],
+    "references": [],
+    "has_linked_file": false,
+    "citation": "Chen, Yongbao (2021). Solar and wind power data from the Chinese State Grid Renewable Energy Generation Forecasting Competition. figshare. Dataset. https://doi.org/10.6084/m9.figshare.17304221.v4",
+    "related_materials": [],
+    "is_embargoed": false,
+    "embargo_date": null,
+    "embargo_type": "file",
+    "embargo_title": "",
+    "embargo_reason": "",
+    "embargo_options": [],
+    "id": 17304221,
+    "title": "Solar and wind power data from the Chinese State Grid Renewable Energy Generation Forecasting Competition",
+    "doi": "10.6084/m9.figshare.17304221.v4",
+    "handle": "",
+    "url": "https://api.figshare.com/v2/articles/17304221",
+    "published_date": "2022-05-22T02:22:52Z",
+    "thumb": "https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/35215042/thumb.png",
+    "defined_type": 3,
+    "defined_type_name": "dataset",
+    "group_id": null,
+    "url_private_api": "https://api.figshare.com/v2/account/articles/17304221",
+    "url_public_api": "https://api.figshare.com/v2/articles/17304221",
+    "url_private_html": "https://figshare.com/account/articles/17304221",
+    "url_public_html": "https://figshare.com/articles/dataset/Solar_and_wind_power_data_from_the_Chinese_State_Grid_Renewable_Energy_Generation_Forecasting_Competition/17304221",
+    "timeline": {
+      "posted": "2022-05-22T02:22:52",
+      "firstOnline": "2021-12-21"
+    },
+    "resource_title": null,
+    "resource_doi": null
+  }
+}

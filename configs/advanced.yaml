@@ -1,0 +1,94 @@
+project:
+  seed: 20260629
+  nominal_capacity_mw: 50.0
+  alpha: 0.10
+  status: exploratory_temporal_replication
+
+data:
+  path: data/raw/multisite/Solar_station_site_1_Nominal_capacity-50MW.csv
+  daylight_hours: [5, 20]
+  folds:
+    - name: q1_2020
+      train_end: "2019-09-30 23:45:00"
+      calibration_start: "2019-10-01 00:00:00"
+      calibration_end: "2019-12-31 23:45:00"
+      test_start: "2020-01-01 00:00:00"
+      test_end: "2020-03-31 23:45:00"
+    - name: q2_2020
+      train_end: "2019-12-31 23:45:00"
+      calibration_start: "2020-01-01 00:00:00"
+      calibration_end: "2020-03-31 23:45:00"
+      test_start: "2020-04-01 00:00:00"
+      test_end: "2020-06-30 23:45:00"
+    - name: q3_2020
+      train_end: "2020-03-31 23:45:00"
+      calibration_start: "2020-04-01 00:00:00"
+      calibration_end: "2020-06-30 23:45:00"
+      test_start: "2020-07-01 00:00:00"
+      test_end: "2020-09-30 23:45:00"
+    - name: q4_2020
+      train_end: "2020-06-30 23:45:00"
+      calibration_start: "2020-07-01 00:00:00"
+      calibration_end: "2020-09-30 23:45:00"
+      test_start: "2020-10-01 00:00:00"
+      test_end: "2020-12-31 23:45:00"
+
+forecast:
+  horizons_steps: [1, 4]
+  lag_steps: [1, 2, 4, 8, 12, 24, 96]
+  rolling_windows: [4, 12, 24]
+  ramp_threshold_capacity_fraction:
+    "1": 0.10
+    "4": 0.20
+  ramp_sensitivity:
+    "1": [0.075, 0.10, 0.15]
+    "4": [0.15, 0.20, 0.25]
+
+model:
+  n_estimators: 48
+  max_depth: 18
+  min_samples_leaf: 5
+  max_features: 0.8
+  max_samples: 0.75
+  max_train_rows: 10000
+  augmented_condition_fraction: 0.65
+  ramp_sample_weight: 2.5
+  degraded_sample_weight: 0.75
+  risk_n_estimators: 48
+  risk_max_depth: 14
+  risk_min_samples_leaf: 8
+  n_jobs: 2
+  lgbm_n_estimators: 120
+  lgbm_num_leaves: 23
+  lgbm_min_child_samples: 35
+  lgbm_learning_rate: 0.06
+
+calibration:
+  min_group_n: 80
+  risk_bins: 4
+  local_fit_fraction: 0.60
+  local_min_samples_leaf: 80
+  local_max_iter: 120
+  local_learning_rate: 0.05
+  rolling_window: 500
+  rolling_min_history: 100
+
+bootstrap:
+  replicates: 300
+
+conditions:
+  - clean
+  - irradiance_outage
+  - weather_outage
+  - recent_power_outage
+  - combined_outage
+
+methods:
+  - persistence_condition_cqr
+  - lgbm_condition_cqr
+  - clean_condition_cqr
+  - robust_condition_cqr
+  - robust_risk_mondrian
+  - robust_local_cqr
+  - robust_rolling_cqr
+  - oracle_ramp_mondrian
