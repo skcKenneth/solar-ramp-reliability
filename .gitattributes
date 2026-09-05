@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.gz binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.pkl binary
+*.png binary
+*.xlsx binary
+*.zip binary

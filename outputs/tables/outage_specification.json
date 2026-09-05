@@ -1,0 +1,749 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "structured_sensor_outage_specification",
+  "status": "machine_readable_ablation_definition_only",
+  "provenance": {
+    "generator": "scripts/generate_specifications.py",
+    "generated_at": null,
+    "deterministic": true,
+    "sources": [
+      {
+        "path": "configs/experiment.yaml",
+        "sha256": "6a7acb05a4eb2ed76614849466f4bc1d5e5e95409c924a5b4382312f22cd1b9b"
+      },
+      {
+        "path": "scripts/generate_specifications.py",
+        "sha256": "dea570f9a6d32f53c76661ea8ba8176c4ba75c3cd9476c32682c87e28a15a09d"
+      },
+      {
+        "path": "src/solar_reliability/advanced.py",
+        "sha256": "a1aa38fc44751204b65348cce17211e0fab08e488f2dd6d6dc056c6cfc94c777"
+      },
+      {
+        "path": "src/solar_reliability/conformal.py",
+        "sha256": "0f3aa1a4231d6ce478ac246eadb9eb921ebae3cff483cda4eec7b08b735bc7e5"
+      },
+      {
+        "path": "src/solar_reliability/data.py",
+        "sha256": "b530660ee95d85aad441489dcde5d12019c052ac15ea57acb56144612812acae"
+      },
+      {
+        "path": "src/solar_reliability/features.py",
+        "sha256": "db83a69b85d2f5f71dc85be5bd5288b05a1737988ad7d9c49fb195a5f1888930"
+      },
+      {
+        "path": "src/solar_reliability/specifications.py",
+        "sha256": "5bff8b51df506574c4408b69ce27dbcc49ac4efba780f9db889faa715b2fe5fd"
+      }
+    ]
+  },
+  "forecast_feature_schema": [
+    "power_current",
+    "power_lag_1",
+    "power_lag_2",
+    "power_lag_4",
+    "power_lag_8",
+    "power_lag_12",
+    "power_lag_24",
+    "power_lag_96",
+    "tsi",
+    "tsi_lag_1",
+    "tsi_lag_4",
+    "dni",
+    "dni_lag_1",
+    "dni_lag_4",
+    "ghi",
+    "ghi_lag_1",
+    "ghi_lag_4",
+    "temperature",
+    "temperature_lag_1",
+    "temperature_lag_4",
+    "pressure",
+    "pressure_lag_1",
+    "pressure_lag_4",
+    "humidity",
+    "humidity_lag_1",
+    "humidity_lag_4",
+    "power_mean_4",
+    "power_std_4",
+    "power_range_4",
+    "power_absdiff_mean_4",
+    "power_mean_12",
+    "power_std_12",
+    "power_range_12",
+    "power_absdiff_mean_12",
+    "power_mean_24",
+    "power_std_24",
+    "power_range_24",
+    "power_absdiff_mean_24",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos",
+    "transition_risk",
+    "recent_power_missing_fraction",
+    "irradiance_missing_fraction",
+    "weather_missing_fraction",
+    "observed_context_fraction"
+  ],
+  "conditions": [
+    {
+      "condition": "clean",
+      "masked_feature_count": 0,
+      "masked_columns": [],
+      "masked_column_details": [],
+      "current_columns": [],
+      "lagged_columns": [],
+      "rolling_summary_columns": [],
+      "descriptor_update": "family missingness descriptors are recomputed after masking"
+    },
+    {
+      "condition": "irradiance_outage",
+      "masked_feature_count": 9,
+      "masked_columns": [
+        "tsi",
+        "tsi_lag_1",
+        "tsi_lag_4",
+        "dni",
+        "dni_lag_1",
+        "dni_lag_4",
+        "ghi",
+        "ghi_lag_1",
+        "ghi_lag_4"
+      ],
+      "masked_column_details": [
+        {
+          "column": "tsi",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "tsi_lag_1",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "tsi_lag_4",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "dni",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "dni_lag_1",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "dni_lag_4",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "ghi",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "ghi_lag_1",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "ghi_lag_4",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "lag",
+          "lag_steps": 4
+        }
+      ],
+      "current_columns": [
+        "tsi",
+        "dni",
+        "ghi"
+      ],
+      "lagged_columns": [
+        "tsi_lag_1",
+        "tsi_lag_4",
+        "dni_lag_1",
+        "dni_lag_4",
+        "ghi_lag_1",
+        "ghi_lag_4"
+      ],
+      "rolling_summary_columns": [],
+      "descriptor_update": "family missingness descriptors are recomputed after masking"
+    },
+    {
+      "condition": "weather_outage",
+      "masked_feature_count": 9,
+      "masked_columns": [
+        "temperature",
+        "temperature_lag_1",
+        "temperature_lag_4",
+        "pressure",
+        "pressure_lag_1",
+        "pressure_lag_4",
+        "humidity",
+        "humidity_lag_1",
+        "humidity_lag_4"
+      ],
+      "masked_column_details": [
+        {
+          "column": "temperature",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "temperature_lag_1",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "temperature_lag_4",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "pressure",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "pressure_lag_1",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "pressure_lag_4",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "humidity",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "humidity_lag_1",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "humidity_lag_4",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "lag",
+          "lag_steps": 4
+        }
+      ],
+      "current_columns": [
+        "temperature",
+        "pressure",
+        "humidity"
+      ],
+      "lagged_columns": [
+        "temperature_lag_1",
+        "temperature_lag_4",
+        "pressure_lag_1",
+        "pressure_lag_4",
+        "humidity_lag_1",
+        "humidity_lag_4"
+      ],
+      "rolling_summary_columns": [],
+      "descriptor_update": "family missingness descriptors are recomputed after masking"
+    },
+    {
+      "condition": "recent_power_outage",
+      "masked_feature_count": 13,
+      "masked_columns": [
+        "power_current",
+        "power_lag_1",
+        "power_lag_2",
+        "power_lag_4",
+        "power_lag_12",
+        "power_mean_4",
+        "power_std_4",
+        "power_range_4",
+        "power_absdiff_mean_4",
+        "power_mean_12",
+        "power_std_12",
+        "power_range_12",
+        "power_absdiff_mean_12"
+      ],
+      "masked_column_details": [
+        {
+          "column": "power_current",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "power_lag_1",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "power_lag_2",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 2
+        },
+        {
+          "column": "power_lag_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "power_lag_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 12
+        },
+        {
+          "column": "power_mean_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "mean",
+          "window_steps": 4
+        },
+        {
+          "column": "power_std_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "std",
+          "window_steps": 4
+        },
+        {
+          "column": "power_range_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "range",
+          "window_steps": 4
+        },
+        {
+          "column": "power_absdiff_mean_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "absdiff_mean",
+          "window_steps": 4
+        },
+        {
+          "column": "power_mean_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "mean",
+          "window_steps": 12
+        },
+        {
+          "column": "power_std_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "std",
+          "window_steps": 12
+        },
+        {
+          "column": "power_range_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "range",
+          "window_steps": 12
+        },
+        {
+          "column": "power_absdiff_mean_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "absdiff_mean",
+          "window_steps": 12
+        }
+      ],
+      "current_columns": [
+        "power_current"
+      ],
+      "lagged_columns": [
+        "power_lag_1",
+        "power_lag_2",
+        "power_lag_4",
+        "power_lag_12"
+      ],
+      "rolling_summary_columns": [
+        "power_mean_4",
+        "power_std_4",
+        "power_range_4",
+        "power_absdiff_mean_4",
+        "power_mean_12",
+        "power_std_12",
+        "power_range_12",
+        "power_absdiff_mean_12"
+      ],
+      "descriptor_update": "family missingness descriptors are recomputed after masking"
+    },
+    {
+      "condition": "combined_outage",
+      "masked_feature_count": 31,
+      "masked_columns": [
+        "tsi",
+        "tsi_lag_1",
+        "tsi_lag_4",
+        "dni",
+        "dni_lag_1",
+        "dni_lag_4",
+        "ghi",
+        "ghi_lag_1",
+        "ghi_lag_4",
+        "temperature",
+        "temperature_lag_1",
+        "temperature_lag_4",
+        "pressure",
+        "pressure_lag_1",
+        "pressure_lag_4",
+        "humidity",
+        "humidity_lag_1",
+        "humidity_lag_4",
+        "power_current",
+        "power_lag_1",
+        "power_lag_2",
+        "power_lag_4",
+        "power_lag_12",
+        "power_mean_4",
+        "power_std_4",
+        "power_range_4",
+        "power_absdiff_mean_4",
+        "power_mean_12",
+        "power_std_12",
+        "power_range_12",
+        "power_absdiff_mean_12"
+      ],
+      "masked_column_details": [
+        {
+          "column": "tsi",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "tsi_lag_1",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "tsi_lag_4",
+          "family": "irradiance",
+          "base_channel": "tsi",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "dni",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "dni_lag_1",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "dni_lag_4",
+          "family": "irradiance",
+          "base_channel": "dni",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "ghi",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "ghi_lag_1",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "ghi_lag_4",
+          "family": "irradiance",
+          "base_channel": "ghi",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "temperature",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "temperature_lag_1",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "temperature_lag_4",
+          "family": "weather",
+          "base_channel": "temperature",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "pressure",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "pressure_lag_1",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "pressure_lag_4",
+          "family": "weather",
+          "base_channel": "pressure",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "humidity",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "humidity_lag_1",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "humidity_lag_4",
+          "family": "weather",
+          "base_channel": "humidity",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "power_current",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "current",
+          "lag_steps": 0
+        },
+        {
+          "column": "power_lag_1",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 1
+        },
+        {
+          "column": "power_lag_2",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 2
+        },
+        {
+          "column": "power_lag_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 4
+        },
+        {
+          "column": "power_lag_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "lag",
+          "lag_steps": 12
+        },
+        {
+          "column": "power_mean_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "mean",
+          "window_steps": 4
+        },
+        {
+          "column": "power_std_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "std",
+          "window_steps": 4
+        },
+        {
+          "column": "power_range_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "range",
+          "window_steps": 4
+        },
+        {
+          "column": "power_absdiff_mean_4",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "absdiff_mean",
+          "window_steps": 4
+        },
+        {
+          "column": "power_mean_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "mean",
+          "window_steps": 12
+        },
+        {
+          "column": "power_std_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "std",
+          "window_steps": 12
+        },
+        {
+          "column": "power_range_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "range",
+          "window_steps": 12
+        },
+        {
+          "column": "power_absdiff_mean_12",
+          "family": "recent_power",
+          "base_channel": "power",
+          "role": "rolling_summary",
+          "statistic": "absdiff_mean",
+          "window_steps": 12
+        }
+      ],
+      "current_columns": [
+        "tsi",
+        "dni",
+        "ghi",
+        "temperature",
+        "pressure",
+        "humidity",
+        "power_current"
+      ],
+      "lagged_columns": [
+        "tsi_lag_1",
+        "tsi_lag_4",
+        "dni_lag_1",
+        "dni_lag_4",
+        "ghi_lag_1",
+        "ghi_lag_4",
+        "temperature_lag_1",
+        "temperature_lag_4",
+        "pressure_lag_1",
+        "pressure_lag_4",
+        "humidity_lag_1",
+        "humidity_lag_4",
+        "power_lag_1",
+        "power_lag_2",
+        "power_lag_4",
+        "power_lag_12"
+      ],
+      "rolling_summary_columns": [
+        "power_mean_4",
+        "power_std_4",
+        "power_range_4",
+        "power_absdiff_mean_4",
+        "power_mean_12",
+        "power_std_12",
+        "power_range_12",
+        "power_absdiff_mean_12"
+      ],
+      "descriptor_update": "family missingness descriptors are recomputed after masking"
+    }
+  ],
+  "target_invariant": {
+    "target_name": "power",
+    "target_is_separate_from_feature_matrix": true,
+    "target_is_masked": false,
+    "target_is_interpolated": false,
+    "configured_no_target_interpolation": true,
+    "mask_function_scope": "forecast-origin feature matrix only"
+  },
+  "structured_ablation_limitations": [
+    "These conditions are controlled deterministic feature-family ablation stress tests, not stochastic models of outage duration, dependence, or recovery.",
+    "They do not model channel noise, bias, or drift, and they do not model all naturally occurring missingness.",
+    "They do not establish that a real sensor outage would have the same joint missingness, persistence, or recovery process.",
+    "The recent-power mask follows the live suffix rule exactly; it includes power_lag_12 and power rolling summaries with 4- and 12-step windows.",
+    "Missingness descriptors remain available and are recomputed after each synthetic mask.",
+    "Natural-missingness eligibility is audited separately and does not create performance claims."
+  ]
+}

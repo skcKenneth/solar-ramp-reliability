@@ -1,0 +1,172 @@
+{
+  "accessibility": {
+    "alt_text": {
+      "bytes": 6626,
+      "figure_count": 3,
+      "path": "outputs/figures/FIGURE_ALT_TEXT.md",
+      "sha256": "5c0defd26139affc41946747c8117bd8888e99928dc0f8b40ad95a8235a65d48"
+    },
+    "claim_validation": {
+      "fig01_protocol_station_screening": {
+        "capacity_status_marks_checked": 7,
+        "chunk_count_matches_station_fold_horizon_product": true,
+        "exclusion_reasons_checked": 2,
+        "external_station_rows": 7,
+        "protocol_stages_checked": 5,
+        "valid_station_set_matches_verdict": true
+      },
+      "fig02_station_worst_undercoverage": {
+        "complete_station_horizon_grid": true,
+        "metric_coordinates_checked": 20,
+        "station_horizon_rows": 10,
+        "tolerance_loaded_from_config": 0.1
+      },
+      "fig03_width_score_tradeoff": {
+        "baseline_reference_values_checked": 4,
+        "candidate_delta_coordinates_checked": 12,
+        "complete_station_availability_checked": 8,
+        "deltas_recomputed_from_source_means": true,
+        "horizon_method_rows": 8,
+        "plotted_points_checked": 8
+      }
+    },
+    "geographic_claims": false,
+    "palette": "Okabe-Ito-derived",
+    "redundant_encoding": "marker shape, fill, and line style"
+  },
+  "core_figure_count": 3,
+  "design_width_inches": 4.78,
+  "deterministic_renderer": "scripts/render_figures.py",
+  "figures": [
+    {
+      "pdf": {
+        "bytes": 27799,
+        "path": "outputs/figures/fig01_protocol_station_screening.pdf",
+        "sha256": "cc0b7f50ef3ad4a26f25df96d7665fd325f008d62b0e49bd04dacd629f49b87a",
+        "vector_only": true
+      },
+      "png": {
+        "bytes": 196268,
+        "dpi": [
+          450.0118,
+          450.0118
+        ],
+        "height_px": 1225,
+        "path": "outputs/figures/fig01_protocol_station_screening.png",
+        "sha256": "3c0a0c08f16a971ee2b85af97725fd37f732c66f9ff1ec2a2a124b8e58de10b9",
+        "width_px": 2126
+      },
+      "status": "PASS",
+      "stem": "fig01_protocol_station_screening",
+      "typography": {
+        "estimated_final_minimum_pt": 6.860743863969072,
+        "pdf_page_width_bp": 340.24455,
+        "placement_scale": 0.9147658485292095,
+        "placement_width_fraction": 0.9,
+        "required_final_minimum_pt": 6.0,
+        "source_minimum_pt": 7.5,
+        "status": "PASS",
+        "target_text_width_mm": 122.0
+      }
+    },
+    {
+      "pdf": {
+        "bytes": 27280,
+        "path": "outputs/figures/fig02_station_worst_undercoverage.pdf",
+        "sha256": "981df86697d1d38c49d66a45ad32bcd03c29f026f57d2429b04679aa57561948",
+        "vector_only": true
+      },
+      "png": {
+        "bytes": 134004,
+        "dpi": [
+          450.0118,
+          450.0118
+        ],
+        "height_px": 1156,
+        "path": "outputs/figures/fig02_station_worst_undercoverage.png",
+        "sha256": "5c4718324588863c70fa04c2394bb0e1d9427a0f9178d77ac86f52f60eaf6297",
+        "width_px": 2156
+      },
+      "status": "PASS",
+      "stem": "fig02_station_worst_undercoverage",
+      "typography": {
+        "estimated_final_minimum_pt": 6.613681911398701,
+        "pdf_page_width_bp": 345.11135,
+        "placement_scale": 0.8818242548531602,
+        "placement_width_fraction": 0.88,
+        "required_final_minimum_pt": 6.0,
+        "source_minimum_pt": 7.5,
+        "status": "PASS",
+        "target_text_width_mm": 122.0
+      }
+    },
+    {
+      "pdf": {
+        "bytes": 23059,
+        "path": "outputs/figures/fig03_width_score_tradeoff.pdf",
+        "sha256": "7a86c478c56c8a27ea48706e5ad083daba37d82a5c32be1109ac5fb5065a3c76",
+        "vector_only": true
+      },
+      "png": {
+        "bytes": 145196,
+        "dpi": [
+          450.0118,
+          450.0118
+        ],
+        "height_px": 1142,
+        "path": "outputs/figures/fig03_width_score_tradeoff.png",
+        "sha256": "c2d1b82820626b7b6693a45518597a68889f0f036fc0336f44e5f12e685576f0",
+        "width_px": 2141
+      },
+      "status": "PASS",
+      "stem": "fig03_width_score_tradeoff",
+      "typography": {
+        "estimated_final_minimum_pt": 6.6546575189169666,
+        "pdf_page_width_bp": 342.98635,
+        "placement_scale": 0.8872876691889289,
+        "placement_width_fraction": 0.88,
+        "required_final_minimum_pt": 6.0,
+        "source_minimum_pt": 7.5,
+        "status": "PASS",
+        "target_text_width_mm": 122.0
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "bytes": 5599,
+      "path": "configs/experiment.yaml",
+      "sha256": "6a7acb05a4eb2ed76614849466f4bc1d5e5e95409c924a5b4382312f22cd1b9b"
+    },
+    {
+      "bytes": 5500,
+      "path": "outputs/tables/method_tradeoffs.csv",
+      "sha256": "96c4419340c47d4a2552f6e343db27f13c74156d2b42d16227c4e6902a0fbe46"
+    },
+    {
+      "bytes": 951,
+      "path": "outputs/tables/multisite_verdict.json",
+      "sha256": "ff7ef9496062411738c73154b0886da55a41c2164953de38df5d8ef551f7494c"
+    },
+    {
+      "bytes": 6016,
+      "path": "outputs/tables/station_data_audit.csv",
+      "sha256": "898c2d76bd850ebc258fb3f2de1789a0965daccb58fba218599928a389e04876"
+    },
+    {
+      "bytes": 6001,
+      "path": "outputs/tables/station_level_effects.csv",
+      "sha256": "ef1fa5eced61c09c98ea03bda8e69a35bf578ec3e1f48ed82752e923e13e7d8d"
+    },
+    {
+      "bytes": 49834,
+      "path": "scripts/render_figures.py",
+      "sha256": "7c3b2febd1f7f2ce64ae43b35ab213c4a990ffef2a351a7013dfaca1d2d9ba8a"
+    }
+  ],
+  "minimum_final_figure_text_pt": 6.0,
+  "minimum_source_figure_text_pt": 7.5,
+  "png_export_dpi": 450,
+  "schema_version": 1,
+  "status": "PASS"
+}

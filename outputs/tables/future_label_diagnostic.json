@@ -1,0 +1,34 @@
+{
+  "adverse_case_count": 1,
+  "adverse_cases": [
+    {
+      "future_label_worse_score_than_deployable": false,
+      "future_label_worse_undercoverage_than_deployable": true,
+      "horizon_steps": 4,
+      "station": "CSGS5"
+    }
+  ],
+  "artifact": "future_label_mondrian_diagnostic",
+  "definition": "conditions on realized future ramp status",
+  "deployable": false,
+  "deterministic": true,
+  "display_name": "Future-label Mondrian diagnostic",
+  "generated_at": null,
+  "interpretation_constraints": [
+    "direct deployable-versus-reference comparisons only",
+    "descriptive, not causal or additive",
+    "not a stacked decomposition",
+    "finite-sample conditioning can perform worse than a deployable method"
+  ],
+  "provenance": {
+    "derived_csv": "outputs/tables/future_label_diagnostic.csv",
+    "derived_csv_sha256": "1801f462d331f05ba948e2779f61728c9a7d0ef1c66f3a8cc087e39211b9354d",
+    "generator": "scripts/analyze_results.py",
+    "generator_sha256": "20c139370ebf10d40bb0a1362e526e62d3bdcbd53d3f6befc6a8114ee8affeac",
+    "source_table": "outputs/tables/oracle_gap_summary.csv",
+    "source_table_sha256": "beca3abad2b6d9555da02c7a8eec302fffbb1d55610fcd035b0a9102d55a180c"
+  },
+  "rows": 10,
+  "schema_version": "1.0.0",
+  "status": "nondeployable_descriptive_reference_only"
+}

@@ -1,0 +1,186 @@
+project:
+  seed: 20260629
+  alpha: 0.10
+  status: fixed_multisite_evaluation
+  frozen_at: "2026-06-30"
+  development_sites: [CSGS1]
+  confirmatory_sites_preferred: [CSGS2, CSGS3, CSGS4, CSGS5, CSGS6, CSGS7, CSGS8]
+  confirmatory_minimum_subset: [CSGS2, CSGS5, CSGS7]
+  confirmatory_subset_policy: use_all_valid_sites_when_feasible
+
+data:
+  manifest: data/multisite_manifest.csv
+  raw_dir: data/raw/multisite
+  receipt: data/raw/multisite/download_receipt.csv
+  station_audit_table: outputs/tables/station_data_audit.csv
+  daylight_hours: [5, 20]
+  sampling_minutes: 15
+  target_column: power
+  no_target_interpolation: true
+  fold_policy:
+    preferred: reuse_site1_calendar_folds_when_supported
+    minimum_train_days: 180
+    minimum_calibration_days: 60
+    minimum_test_days: 60
+    minimum_test_daylight_targets_per_fold_horizon: 500
+    minimum_ramp_targets_per_fold_horizon: 40
+    if_calendar_folds_not_supported: station_specific_chronological_quarters
+    station_specific_rule: >
+      Use the latest contiguous period that supports four chronological
+      rolling folds. Each fold uses all earlier valid data for training,
+      the immediately preceding block for calibration, and the next block
+      for test. Do not choose folds based on method outcomes.
+  site1_calendar_folds:
+    - name: q1_2020
+      train_end: "2019-09-30 23:45:00"
+      calibration_start: "2019-10-01 00:00:00"
+      calibration_end: "2019-12-31 23:45:00"
+      test_start: "2020-01-01 00:00:00"
+      test_end: "2020-03-31 23:45:00"
+    - name: q2_2020
+      train_end: "2019-12-31 23:45:00"
+      calibration_start: "2020-01-01 00:00:00"
+      calibration_end: "2020-03-31 23:45:00"
+      test_start: "2020-04-01 00:00:00"
+      test_end: "2020-06-30 23:45:00"
+    - name: q3_2020
+      train_end: "2020-03-31 23:45:00"
+      calibration_start: "2020-04-01 00:00:00"
+      calibration_end: "2020-06-30 23:45:00"
+      test_start: "2020-07-01 00:00:00"
+      test_end: "2020-09-30 23:45:00"
+    - name: q4_2020
+      train_end: "2020-06-30 23:45:00"
+      calibration_start: "2020-07-01 00:00:00"
+      calibration_end: "2020-09-30 23:45:00"
+      test_start: "2020-10-01 00:00:00"
+      test_end: "2020-12-31 23:45:00"
+  integrity_exclusion_rules:
+    max_duplicate_timestamp_rate: 0.001
+    max_target_missing_rate_daylight: 0.20
+    max_sensor_missing_rate_any_required_channel: 0.50
+    optional_sensor_columns: [humidity]
+    require_regular_15min_grid_after_reindex: true
+    require_positive_nominal_capacity: true
+    exclude_if_no_supported_fold: true
+    exclude_if_required_columns_missing: true
+    performance_based_exclusion_allowed: false
+  fallback_replacement_rule:
+    enabled: true
+    primary_subset: [CSGS2, CSGS5, CSGS7]
+    ordered_replacements: [CSGS4, CSGS6, CSGS3, CSGS8]
+    rule: >
+      If a primary subset station fails objective data-integrity requirements,
+      replace it with the first valid station in ordered_replacements, preferring
+      capacity diversity and never using outcome performance.
+
+forecast:
+  horizons_steps: [1, 4]
+  lag_steps: [1, 2, 4, 8, 12, 24, 96]
+  rolling_windows: [4, 12, 24]
+  ramp_threshold_capacity_fraction:
+    "1": 0.10
+    "4": 0.20
+  ramp_sensitivity:
+    "1": [0.075, 0.10, 0.15]
+    "4": [0.15, 0.20, 0.25]
+
+model:
+  n_estimators: 48
+  max_depth: 18
+  min_samples_leaf: 5
+  max_features: 0.8
+  max_samples: 0.75
+  max_train_rows: 10000
+  augmented_condition_fraction: 0.65
+  ramp_sample_weight: 2.5
+  degraded_sample_weight: 0.75
+  risk_n_estimators: 48
+  risk_max_depth: 14
+  risk_min_samples_leaf: 8
+  n_jobs: 2
+  lgbm_n_estimators: 120
+  lgbm_num_leaves: 23
+  lgbm_min_child_samples: 35
+  lgbm_learning_rate: 0.06
+
+calibration:
+  min_group_n: 80
+  risk_bins: 4
+  local_fit_fraction: 0.60
+  local_min_samples_leaf: 80
+  local_max_iter: 120
+  local_learning_rate: 0.05
+  rolling_window: 500
+  rolling_min_history: 100
+
+bootstrap:
+  station_outer_replicates: 2000
+  day_inner_replicates: 300
+  leave_one_station_out: true
+
+conditions:
+  - clean
+  - irradiance_outage
+  - weather_outage
+  - recent_power_outage
+  - combined_outage
+
+methods:
+  primary_baseline: robust_condition_cqr
+  primary_deployable_candidates:
+    - robust_risk_mondrian
+    - robust_local_cqr
+    - robust_rolling_cqr
+  full_set:
+    - persistence_condition_cqr
+    - lgbm_condition_cqr
+    - clean_condition_cqr
+    - robust_condition_cqr
+    - robust_risk_mondrian
+    - robust_local_cqr
+    - robust_rolling_cqr
+    - oracle_ramp_mondrian
+  non_deployable_diagnostics:
+    - oracle_ramp_mondrian
+
+outputs:
+  root: work/results
+  cache: work/cache
+  tables: outputs/tables
+  figures: outputs/figures
+  logs: work/logs
+  completion_markers: work/cache/completion_markers
+
+metrics:
+  primary:
+    - worst_group_undercoverage
+  secondary:
+    - coverage
+    - undercoverage_error
+    - overcoverage_error
+    - mean_width
+    - normalized_width
+    - interval_score
+    - normalized_interval_score
+    - mae
+    - ramp_prevalence
+    - oracle_conditioning_gap
+  statistical_replication_units:
+    primary: station
+    secondary: fold_within_station
+    bootstrap_inner_cluster: calendar_day
+
+decision_rules:
+  comparative_gate:
+    improvement_over_baseline_at_each_horizon: 0.05
+    minimum_station_proportion_improved: 0.60
+    station_cluster_ci_high_below_zero: true
+    clean_context_score_ratio_max: 1.10
+  absolute_reliability_gate:
+    max_worst_group_undercoverage_each_horizon: 0.10
+  labels:
+    full_evaluation: CONFIRMATORY_EVALUATION_COMPLETE
+    full_method: METHOD_CRITERIA_MET
+    partial_criteria: PARTIAL_CRITERIA_MET
+    no_go: CRITERIA_NOT_MET

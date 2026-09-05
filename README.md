@@ -1,47 +1,46 @@
-# Solar Ramp Reliability: Implementation Package
+# Solar ramp reliability
 
-This archive contains the Python implementation, frozen configurations, tests,
-data manifests, and compact generated result tables for the solar-ramp reliability study,
-“When Solar Power Changes Fast: Conditional Reliability of Prediction Intervals under Ramp Events and Sensor Degradation.”
+This repository contains the runnable scientific workflow, its eight source data
+files, and the corresponding result tables and figures. The compact release does
+not include a paper or document-production files.
 
-It intentionally excludes raw station data files, large prediction caches,
-personal paths, Git metadata, and local runtime caches.
+## Requirements
 
-## Minimal Verification Without Large Data/Caches
+- Python 3.11 or newer
+- Windows, macOS, or Linux
 
-```powershell
-python -m pytest -q
-python scripts\verify_literature_metadata.py
-```
-
-If dependencies are not already available, create an environment with the
-packages in `requirements-lock.txt` before running the minimal verification.
-
-## Full Reproduction Path
-
-This compact implementation package excludes raw public station files and large
-prediction chunk caches. To run the full test suite, first retrieve the public
-data and rebuild or restore the cached confirmatory chunks:
+Create an isolated environment and install the locked dependencies. On Windows:
 
 ```powershell
-python scripts\download_multisite_data.py
-python scripts\run_multisite_confirmatory.py --config configs\multisite_confirmatory.yaml
-python -m pytest -q
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements-lock.txt
+.venv\Scripts\python -m pip install -e . --no-deps
 ```
 
-## Rebuild Derived Tables and Figures
+On macOS or Linux, use `.venv/bin/python` instead.
+
+## Verify the package
 
 ```powershell
-python scripts\audit_multisite_data.py --config configs\multisite_confirmatory.yaml
-python scripts\aggregate_multisite_confirmatory.py --config configs\multisite_confirmatory.yaml
-python scripts\render_multisite_figures.py --config configs\multisite_confirmatory.yaml
-python scripts\build_adma_manuscript_assets.py
+python -m pytest -q -p no:cacheprovider
+python main.py audit
+python main.py smoke
+python main.py figures
 ```
 
-Full confirmatory prediction reruns require the public raw station files listed
-in `data/multisite_manifest.csv` and `data/raw/multisite/download_receipt.csv`.
+The smoke command checks every cell of the fixed 5-station x 4-fold x 2-horizon
+matrix without fitting the models.
 
+## Rebuild all results
 
-## Repository note
+```powershell
+python main.py run
+```
 
-This GitHub-oriented package contains code, configurations, tests, manifests, and compact generated tables/figures. The manuscript source is distributed separately.
+This command audits the data, fits all 40 jobs, checks their 120 intermediate
+artifacts, aggregates the results, generates the derived CSV/JSON files, and
+renders the figures. Temporary model chunks and completion markers are written
+under `work/` and are intentionally excluded from the repository ZIP.
+
+Included result artifacts are under `outputs/tables/` and `outputs/figures/`.
+`OUTPUT_MANIFEST.json` records their byte sizes and SHA-256 digests.

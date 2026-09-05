@@ -6,6 +6,8 @@ from typing import Iterable
 import numpy as np
 import pandas as pd
 
+from .splits import leakage_safe_fold_masks
+
 COLUMN_MAP = {
     "Time(year-month-day h:m:s)": "timestamp",
     "date": "timestamp",
@@ -67,17 +69,32 @@ def split_frame(
     calibration_end: str,
     test_start: str,
     test_end: str,
+    *,
+    target_timestamps: pd.Series | pd.Index | np.ndarray,
+    horizon_steps: int,
+    sampling_minutes: int = 15,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    train = frame.loc[:pd.Timestamp(train_end)].copy()
-    calibration = frame.loc[pd.Timestamp(calibration_start):pd.Timestamp(calibration_end)].copy()
-    test = frame.loc[pd.Timestamp(test_start):pd.Timestamp(test_end)].copy()
-    if train.empty or calibration.empty or test.empty:
-        raise ValueError("One or more chronological splits are empty")
-    if train.index.max() >= calibration.index.min():
-        raise ValueError("Training and calibration periods overlap")
-    if calibration.index.max() >= test.index.min():
-        raise ValueError("Calibration and test periods overlap")
-    return train, calibration, test
+    """Split forecast-origin rows without allowing labels to cross a boundary."""
+
+    fold = {
+        "train_end": train_end,
+        "calibration_start": calibration_start,
+        "calibration_end": calibration_end,
+        "test_start": test_start,
+        "test_end": test_end,
+    }
+    masks = leakage_safe_fold_masks(
+        frame.index,
+        target_timestamps,
+        fold,
+        horizon_steps=horizon_steps,
+        sampling_minutes=sampling_minutes,
+    )
+    return (
+        frame.loc[masks.train].copy(),
+        frame.loc[masks.calibration].copy(),
+        frame.loc[masks.test].copy(),
+    )
 
 
 def missingness_summary(frame: pd.DataFrame, columns: Iterable[str] = SENSOR_COLUMNS) -> pd.DataFrame:

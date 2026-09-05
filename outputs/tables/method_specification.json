@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "descriptor_conditioned_score_cqr_method_specification",
+  "method_key": "robust_local_cqr",
+  "display_name": "Descriptor-conditioned score CQR",
+  "status": "machine_readable_method_definition_only",
+  "provenance": {
+    "generator": "scripts/generate_specifications.py",
+    "generated_at": null,
+    "deterministic": true,
+    "sources": [
+      {
+        "path": "configs/experiment.yaml",
+        "sha256": "6a7acb05a4eb2ed76614849466f4bc1d5e5e95409c924a5b4382312f22cd1b9b"
+      },
+      {
+        "path": "scripts/generate_specifications.py",
+        "sha256": "dea570f9a6d32f53c76661ea8ba8176c4ba75c3cd9476c32682c87e28a15a09d"
+      },
+      {
+        "path": "src/solar_reliability/advanced.py",
+        "sha256": "a1aa38fc44751204b65348cce17211e0fab08e488f2dd6d6dc056c6cfc94c777"
+      },
+      {
+        "path": "src/solar_reliability/conformal.py",
+        "sha256": "0f3aa1a4231d6ce478ac246eadb9eb921ebae3cff483cda4eec7b08b735bc7e5"
+      },
+      {
+        "path": "src/solar_reliability/data.py",
+        "sha256": "b530660ee95d85aad441489dcde5d12019c052ac15ea57acb56144612812acae"
+      },
+      {
+        "path": "src/solar_reliability/features.py",
+        "sha256": "db83a69b85d2f5f71dc85be5bd5288b05a1737988ad7d9c49fb195a5f1888930"
+      },
+      {
+        "path": "src/solar_reliability/specifications.py",
+        "sha256": "5bff8b51df506574c4408b69ce27dbcc49ac4efba780f9db889faa715b2fe5fd"
+      }
+    ]
+  },
+  "target_miscoverage_alpha": 0.1,
+  "nominal_coverage": 0.9,
+  "nonconformity_score": {
+    "formula": "max(lower - y, y - upper, 0)",
+    "nonnegative": true,
+    "semantics": "expansion-only CQR score"
+  },
+  "conditioning_model": {
+    "type": "LightGBM quantile regressor for the nonconformity score",
+    "explicit_distance_metric": null,
+    "k_nearest_neighbors": null,
+    "uses_distance_or_k_neighborhood": false,
+    "objective": "quantile",
+    "quantile_alpha": 0.9,
+    "n_estimators": 120,
+    "num_leaves": 15,
+    "min_child_samples": 80,
+    "learning_rate": 0.05,
+    "regularization": {
+      "reg_lambda_l2": 2.0
+    },
+    "n_jobs": 2,
+    "project_base_seed": 20260629,
+    "random_state": "caller-supplied deterministic per-run seed"
+  },
+  "forecast_time_descriptor_schema": [
+    {
+      "name": "risk",
+      "definition": "Forecast-time output of the training-fitted ramp-risk model.",
+      "source": "forecast_model_output",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "native_width",
+      "definition": "Base upper-minus-lower interval width divided by nominal capacity.",
+      "source": "forecast_model_output",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "median_level",
+      "definition": "Base median forecast divided by nominal capacity.",
+      "source": "forecast_model_output",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "recent_power_missing_fraction",
+      "definition": "Missing fraction across recent power context after the requested mask.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "irradiance_missing_fraction",
+      "definition": "Missing fraction across irradiance features after the requested mask.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "weather_missing_fraction",
+      "definition": "Missing fraction across weather features after the requested mask.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "observed_context_fraction",
+      "definition": "One minus the mean of the three family missing fractions.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "hour_sin",
+      "definition": "Sine encoding of forecast-origin hour.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "hour_cos",
+      "definition": "Cosine encoding of forecast-origin hour.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "transition_risk",
+      "definition": "Indicator for forecast origins before 09:00 or after 16:00.",
+      "source": "forecast_origin_features",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "condition__clean",
+      "definition": "One-hot indicator for the known evaluation degradation condition.",
+      "source": "evaluation_condition",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "condition__irradiance_outage",
+      "definition": "One-hot indicator for the known evaluation degradation condition.",
+      "source": "evaluation_condition",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "condition__weather_outage",
+      "definition": "One-hot indicator for the known evaluation degradation condition.",
+      "source": "evaluation_condition",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "condition__recent_power_outage",
+      "definition": "One-hot indicator for the known evaluation degradation condition.",
+      "source": "evaluation_condition",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    },
+    {
+      "name": "condition__combined_outage",
+      "definition": "One-hot indicator for the known evaluation degradation condition.",
+      "source": "evaluation_condition",
+      "available_at_forecast_time": true,
+      "uses_future_target_or_ramp_label": false
+    }
+  ],
+  "descriptor_column_order": [
+    "risk",
+    "native_width",
+    "median_level",
+    "recent_power_missing_fraction",
+    "irradiance_missing_fraction",
+    "weather_missing_fraction",
+    "observed_context_fraction",
+    "hour_sin",
+    "hour_cos",
+    "transition_risk",
+    "condition__clean",
+    "condition__irradiance_outage",
+    "condition__weather_outage",
+    "condition__recent_power_outage",
+    "condition__combined_outage"
+  ],
+  "chronological_score_split": {
+    "ordering_unit": "unique calibration forecast-origin timestamp",
+    "sort_order": "ascending",
+    "model_fit_fraction": 0.6,
+    "finite_sample_adjustment_fraction": 0.4,
+    "model_fit_block": "earliest timestamps",
+    "finite_sample_adjustment_block": "latest timestamps",
+    "timestamp_groups_kept_intact": true,
+    "boundary_rule": "floor(n_unique_timestamps * model_fit_fraction), clamped to [1, n-1]",
+    "minimum_unique_timestamps": 2
+  },
+  "finite_sample_correction": {
+    "residual": "observed_score - score_quantile_model_prediction",
+    "sample": "latest 40% chronological adjustment block",
+    "quantile_rank": "ceil((n + 1) * (1 - alpha)), bounded to [1, n]",
+    "quantile_method": "higher order statistic after sorting finite residuals",
+    "correction": "max(0, conformal_quantile(residual, alpha))",
+    "test_score_quantile": "max(model_prediction + correction, 0)"
+  },
+  "interval_construction": {
+    "base_interval_clipped_before_scoring": true,
+    "lower": "base_lower - test_score_quantile",
+    "upper": "base_upper + test_score_quantile",
+    "clip_lower_to": 0.0,
+    "clip_upper_to": "station nominal capacity MW",
+    "post_clip_ordering": "lower=min(clipped_lower, clipped_upper); upper=max(clipped_lower, clipped_upper)"
+  },
+  "fallback_policy": {
+    "alternative_calibrator": null,
+    "silent_substitution": false,
+    "behavior": "fail explicitly if the chronological split, model fit, or finite residual quantile is unavailable"
+  },
+  "future_information_exclusions": [
+    "future target y",
+    "future ramp magnitude",
+    "future ramp indicator or direction",
+    "oracle ramp-group label",
+    "test nonconformity score"
+  ]
+}

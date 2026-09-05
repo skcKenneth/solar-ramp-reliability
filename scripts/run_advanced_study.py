@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
 import time
 import warnings
@@ -39,6 +40,8 @@ from solar_reliability.models import (  # noqa: E402
     fit_quantile_models,
     fit_ramp_risk_model,
 )
+from solar_reliability.reproducibility import job_seed_map  # noqa: E402
+from solar_reliability.splits import leakage_safe_fold_masks, split_audit_summary  # noqa: E402
 
 
 def sha256(path: Path) -> str:
@@ -47,6 +50,20 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def atomic_to_pickle(frame: pd.DataFrame, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    frame.to_pickle(temporary, compression="gzip")
+    os.replace(temporary, path)
+
+
+def atomic_to_csv(frame: pd.DataFrame, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    frame.to_csv(temporary, index=False)
+    os.replace(temporary, path)
 
 
 def peak_rss_mb() -> float | None:
@@ -293,6 +310,7 @@ def main() -> None:
     frame, capacity, data_path = load_configured_frame(cfg)
     alpha = float(cfg["project"]["alpha"])
     seed = int(cfg["project"]["seed"])
+    station_id = str(cfg["project"].get("station_id", "CSGS1"))
     conditions = list(cfg["conditions"])
 
     all_predictions: list[pd.DataFrame] = []
@@ -318,35 +336,47 @@ def main() -> None:
     if args.chunk_only and (len(selected_folds) != 1 or len(selected_horizons) != 1):
         raise ValueError("--chunk-only requires exactly one --fold and one --horizon")
 
-    for fold_index, fold in enumerate(selected_folds):
+    for fold in selected_folds:
         fold_name = str(fold["name"])
         for horizon in selected_horizons:
             horizon = int(horizon)
             x, y, meta = supervised_cache[horizon]
-            train_mask = x.index <= pd.Timestamp(fold["train_end"])
-            cal_mask = x.index.to_series().between(
-                pd.Timestamp(fold["calibration_start"]), pd.Timestamp(fold["calibration_end"])
-            ).to_numpy()
-            test_mask = x.index.to_series().between(
-                pd.Timestamp(fold["test_start"]), pd.Timestamp(fold["test_end"])
-            ).to_numpy()
-            x_train, y_train, meta_train = x.loc[train_mask], y.loc[train_mask], meta.loc[train_mask]
+            masks = leakage_safe_fold_masks(
+                x.index,
+                meta["target_timestamp"],
+                fold,
+                horizon_steps=horizon,
+                sampling_minutes=int(cfg["data"]["sampling_minutes"]),
+            )
+            x_train, y_train, meta_train = (
+                x.loc[masks.train],
+                y.loc[masks.train],
+                meta.loc[masks.train],
+            )
             x_train, y_train, meta_train = subsample_training(
                 x_train, y_train, meta_train, int(cfg["model"]["max_train_rows"])
             )
-            x_cal, y_cal, meta_cal = x.loc[cal_mask], y.loc[cal_mask], meta.loc[cal_mask]
-            x_test, y_test, meta_test = x.loc[test_mask], y.loc[test_mask], meta.loc[test_mask]
+            x_cal, y_cal, meta_cal = (
+                x.loc[masks.calibration],
+                y.loc[masks.calibration],
+                meta.loc[masks.calibration],
+            )
+            x_test, y_test, meta_test = x.loc[masks.test], y.loc[masks.test], meta.loc[masks.test]
             if min(len(x_train), len(x_cal), len(x_test)) == 0:
                 raise RuntimeError(f"Empty split: {fold_name}, h={horizon}")
 
             ramp_threshold = float(cfg["forecast"]["ramp_threshold_capacity_fraction"][str(horizon)])
             ramp_train = meta_train["ramp_fraction"].to_numpy() >= ramp_threshold
-            model_seed = seed + 1000 * fold_index + 10 * horizon
+            seeds = job_seed_map(seed, station_id, fold_name, horizon)
 
             print(f"starting {fold_name}, horizon={horizon}: train={len(x_train)}, cal={len(x_cal)}, test={len(x_test)}", flush=True)
-            clean_model = fit_quantile_models(x_train, y_train, alpha, cfg["model"], model_seed)
+            clean_model = fit_quantile_models(
+                x_train, y_train, alpha, cfg["model"], seeds["clean_model"]
+            )
             print("  clean model fitted", flush=True)
-            lgbm_model = fit_hist_quantile_models(x_train, y_train, alpha, cfg["model"], model_seed + 1)
+            lgbm_model = fit_hist_quantile_models(
+                x_train, y_train, alpha, cfg["model"], seeds["lgbm_model"]
+            )
             print("  LightGBM baseline fitted", flush=True)
             x_aug, y_aug, w_aug, aug_labels = augment_training_set(
                 x_train,
@@ -356,18 +386,29 @@ def main() -> None:
                 float(cfg["model"]["augmented_condition_fraction"]),
                 float(cfg["model"]["ramp_sample_weight"]),
                 float(cfg["model"]["degraded_sample_weight"]),
-                model_seed + 2,
+                seeds["augmentation"],
             )
             robust_model = fit_quantile_models(
-                x_aug, y_aug, alpha, cfg["model"], model_seed + 3, sample_weight=w_aug
+                x_aug,
+                y_aug,
+                alpha,
+                cfg["model"],
+                seeds["robust_model"],
+                sample_weight=w_aug,
             )
             print(f"  robust model fitted on {len(x_aug)} rows", flush=True)
-            ramp_model = fit_ramp_risk_model(x_train, ramp_train.astype(int), cfg["model"], model_seed + 4)
+            ramp_model = fit_ramp_risk_model(
+                x_train,
+                ramp_train.astype(int),
+                cfg["model"],
+                seeds["ramp_risk_model"],
+            )
             print("  ramp-risk model fitted", flush=True)
 
             run_records.append(
                 {
                     "fold": fold_name,
+                    "station": station_id,
                     "horizon_steps": horizon,
                     "train_n": len(x_train),
                     "augmented_train_n": len(x_aug),
@@ -380,6 +421,12 @@ def main() -> None:
                     ),
                     "test_ramp_prevalence": float((meta_test["ramp_fraction"] >= ramp_threshold).mean()),
                     "features": x_train.shape[1],
+                    "base_seed": seed,
+                    **{f"seed_{name}": value for name, value in seeds.items()},
+                    "split_audit_json": json.dumps(
+                        split_audit_summary(x.index, meta["target_timestamp"], masks),
+                        separators=(",", ":"),
+                    ),
                 }
             )
 
@@ -471,7 +518,7 @@ def main() -> None:
                 int(cfg["calibration"]["local_min_samples_leaf"]),
                 int(cfg["calibration"]["local_max_iter"]),
                 float(cfg["calibration"]["local_learning_rate"]),
-                model_seed + 5,
+                seeds["local_calibrator"],
             )
             print("  local calibrator fitted", flush=True)
 
@@ -611,9 +658,12 @@ def main() -> None:
         fold_name = str(run_records[0]["fold"])
         horizon = int(run_records[0]["horizon_steps"])
         stem = f"{fold_name}_h{horizon}"
-        predictions.to_pickle(chunks / f"predictions_{stem}.pkl.gz", compression="gzip")
-        pd.DataFrame(run_records).to_csv(chunks / f"run_{stem}.csv", index=False)
-        pd.DataFrame(calibration_records).to_csv(chunks / f"calibration_{stem}.csv", index=False)
+        atomic_to_pickle(predictions, chunks / f"predictions_{stem}.pkl.gz")
+        atomic_to_csv(pd.DataFrame(run_records), chunks / f"run_{stem}.csv")
+        atomic_to_csv(
+            pd.DataFrame(calibration_records),
+            chunks / f"calibration_{stem}.csv",
+        )
         print(f"saved chunk {stem}: {len(predictions):,} rows", flush=True)
         return
     predictions.to_pickle(out_cache / "advanced_predictions.pkl.gz", compression="gzip")
@@ -706,11 +756,11 @@ def main() -> None:
     )
     absolute_reliability = bool((gates["best_worst_undercoverage"] <= 0.10).all())
     if phenomenon and comparative_improvement:
-        verdict = "GO_FULL_PAPER_EVALUATION_METHOD_PROMISING_SINGLE_SITE"
+        verdict = "METHOD_PROMISING_SINGLE_SITE"
     elif phenomenon:
-        verdict = "GO_FULL_PAPER_EVALUATION_REQUIRES_EXTERNAL_SITE"
+        verdict = "METHOD_REQUIRES_EXTERNAL_SITE"
     else:
-        verdict = "GO_SHORT_PAPER_OR_REDESIGN"
+        verdict = "METHOD_REDESIGN_RECOMMENDED"
     decision = {
         "status": "ADVANCED_TEMPORAL_REPLICATION_COMPLETE",
         "verdict": verdict,

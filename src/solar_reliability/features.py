@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
+
 import numpy as np
 import pandas as pd
 
@@ -8,6 +10,17 @@ from .data import SENSOR_COLUMNS
 POWER_LAGS = [1, 2, 4, 8, 12, 24, 96]
 SENSOR_LAGS = [0, 1, 4]
 ROLLING_WINDOWS = [4, 12, 24]
+IRRADIANCE_PREFIXES = ("tsi", "dni", "ghi")
+WEATHER_PREFIXES = ("temperature", "pressure", "humidity")
+RECENT_POWER_COLUMNS = ("power_current", "power_lag_1", "power_lag_2", "power_lag_4")
+RECENT_POWER_ROLLING_WINDOWS = (4, 12)
+OUTAGE_CONDITIONS = (
+    "clean",
+    "irradiance_outage",
+    "weather_outage",
+    "recent_power_outage",
+    "combined_outage",
+)
 
 
 def _safe_fraction_missing(frame: pd.DataFrame, columns: list[str]) -> pd.Series:
@@ -111,37 +124,48 @@ def make_supervised(
     return x, target, meta
 
 
-def apply_condition(x: pd.DataFrame, condition: str) -> pd.DataFrame:
-    out = x.copy()
-    irr = [c for c in out if c.startswith(("tsi", "dni", "ghi")) and "missing_fraction" not in c]
+def condition_mask_columns(columns: Iterable[str], condition: str) -> list[str]:
+    """Return the exact, ordered feature mask used for a degradation condition."""
+
+    if condition not in OUTAGE_CONDITIONS:
+        raise ValueError(f"Unknown condition: {condition}")
+
+    ordered_columns = list(columns)
+    irr = [
+        c
+        for c in ordered_columns
+        if c.startswith(IRRADIANCE_PREFIXES) and "missing_fraction" not in c
+    ]
     weather = [
         c
-        for c in out
-        if c.startswith(("temperature", "pressure", "humidity")) and "missing_fraction" not in c
+        for c in ordered_columns
+        if c.startswith(WEATHER_PREFIXES) and "missing_fraction" not in c
     ]
-    power_recent = [
-        c for c in ["power_current", "power_lag_1", "power_lag_2", "power_lag_4"] if c in out
-    ]
+    power_recent = [c for c in RECENT_POWER_COLUMNS if c in ordered_columns]
     short_power_rolls = [
         c
-        for c in out
+        for c in ordered_columns
         if c.startswith("power_")
         and c not in power_recent
-        and any(c.endswith(f"_{w}") for w in (4, 12))
+        and any(c.endswith(f"_{w}") for w in RECENT_POWER_ROLLING_WINDOWS)
     ]
 
     if condition == "clean":
-        pass
-    elif condition == "irradiance_outage":
-        out[irr] = np.nan
-    elif condition == "weather_outage":
-        out[weather] = np.nan
-    elif condition == "recent_power_outage":
-        out[power_recent + short_power_rolls] = np.nan
-    elif condition == "combined_outage":
-        out[irr + weather + power_recent + short_power_rolls] = np.nan
-    else:
-        raise ValueError(f"Unknown condition: {condition}")
+        return []
+    if condition == "irradiance_outage":
+        return irr
+    if condition == "weather_outage":
+        return weather
+    if condition == "recent_power_outage":
+        return power_recent + short_power_rolls
+    return irr + weather + power_recent + short_power_rolls
+
+
+def apply_condition(x: pd.DataFrame, condition: str) -> pd.DataFrame:
+    out = x.copy()
+    masked_columns = condition_mask_columns(out.columns, condition)
+    if masked_columns:
+        out[masked_columns] = np.nan
 
     return _refresh_missingness_descriptors(out)
 

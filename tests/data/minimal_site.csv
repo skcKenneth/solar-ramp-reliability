@@ -1,5 +1,0 @@
-date,Total solar irradiance (W/m2),Direct normal irradiance (W/m2),Global horizontal irradiance (W/m2),Air temperature  (°C) ,Atmosphere (hpa),Power (MW)
-2019-01-01 00:00:00,0,0,0,-5,930,0.0
-2019-01-01 00:15:00,100,80,90,0,931,10.0
-2019-01-01 00:30:00,200,160,180,5,932,20.0
-2019-01-01 00:45:00,150,120,130,3,931,15.0

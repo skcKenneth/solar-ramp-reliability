@@ -1,0 +1,168 @@
+{
+  "output_count": 32,
+  "outputs": [
+    {
+      "bytes": 6626,
+      "path": "outputs/figures/FIGURE_ALT_TEXT.md",
+      "sha256": "5c0defd26139affc41946747c8117bd8888e99928dc0f8b40ad95a8235a65d48"
+    },
+    {
+      "bytes": 27799,
+      "path": "outputs/figures/fig01_protocol_station_screening.pdf",
+      "sha256": "cc0b7f50ef3ad4a26f25df96d7665fd325f008d62b0e49bd04dacd629f49b87a"
+    },
+    {
+      "bytes": 196268,
+      "path": "outputs/figures/fig01_protocol_station_screening.png",
+      "sha256": "3c0a0c08f16a971ee2b85af97725fd37f732c66f9ff1ec2a2a124b8e58de10b9"
+    },
+    {
+      "bytes": 27280,
+      "path": "outputs/figures/fig02_station_worst_undercoverage.pdf",
+      "sha256": "981df86697d1d38c49d66a45ad32bcd03c29f026f57d2429b04679aa57561948"
+    },
+    {
+      "bytes": 134004,
+      "path": "outputs/figures/fig02_station_worst_undercoverage.png",
+      "sha256": "5c4718324588863c70fa04c2394bb0e1d9427a0f9178d77ac86f52f60eaf6297"
+    },
+    {
+      "bytes": 23059,
+      "path": "outputs/figures/fig03_width_score_tradeoff.pdf",
+      "sha256": "7a86c478c56c8a27ea48706e5ad083daba37d82a5c32be1109ac5fb5065a3c76"
+    },
+    {
+      "bytes": 145196,
+      "path": "outputs/figures/fig03_width_score_tradeoff.png",
+      "sha256": "c2d1b82820626b7b6693a45518597a68889f0f036fc0336f44e5f12e685576f0"
+    },
+    {
+      "bytes": 1843,
+      "path": "outputs/tables/candidate_station_gates.csv",
+      "sha256": "8c2fc44c12599eb00625f724f19399ca70ef2d91bc8218f29ff0e30fc5b577a7"
+    },
+    {
+      "bytes": 1346958,
+      "path": "outputs/tables/conditional_metrics.csv",
+      "sha256": "f83691a5119ceaa250ae150d26cec508c851d0bdd8bdf2dc1df8a94ef79d5fae"
+    },
+    {
+      "bytes": 1293027,
+      "path": "outputs/tables/directional_ramp_metrics.csv",
+      "sha256": "8ad5270c6934bfd8e5f95c5a6f10d63df9c70f1a088f3662e1715ca02e8f9064"
+    },
+    {
+      "bytes": 48711,
+      "path": "outputs/tables/fold_method_scores.csv",
+      "sha256": "d6a1ac593838e362eb78360ae06c17125852f398d05b4c67ec3d6c8e7a0c6a87"
+    },
+    {
+      "bytes": 2620,
+      "path": "outputs/tables/future_label_diagnostic.csv",
+      "sha256": "1801f462d331f05ba948e2779f61728c9a7d0ef1c66f3a8cc087e39211b9354d"
+    },
+    {
+      "bytes": 1338,
+      "path": "outputs/tables/future_label_diagnostic.json",
+      "sha256": "2a5ca2677a11abcc3ced28044d5bbd662c4898e726246b1d4a6651600ceccc0c"
+    },
+    {
+      "bytes": 4252,
+      "path": "outputs/tables/gate_sensitivity.csv",
+      "sha256": "84fb375caa768c2d2b4f86c67f5d31259d819316514433705a8d05f857d8475d"
+    },
+    {
+      "bytes": 2341,
+      "path": "outputs/tables/leave_one_station_out.csv",
+      "sha256": "0ad727f6b2a98d17ed1f08c8f9871b8f4ef735e6c2464456a1f974bb2ef9c3ef"
+    },
+    {
+      "bytes": 8442,
+      "path": "outputs/tables/method_specification.json",
+      "sha256": "262aa90b4d2ea6ca3bbf267f3762c44944dd44c916934627ef7479775612f7cc"
+    },
+    {
+      "bytes": 5500,
+      "path": "outputs/tables/method_tradeoffs.csv",
+      "sha256": "96c4419340c47d4a2552f6e343db27f13c74156d2b42d16227c4e6902a0fbe46"
+    },
+    {
+      "bytes": 951,
+      "path": "outputs/tables/multisite_verdict.json",
+      "sha256": "ff7ef9496062411738c73154b0886da55a41c2164953de38df5d8ef551f7494c"
+    },
+    {
+      "bytes": 89555,
+      "path": "outputs/tables/natural_missingness_audit.csv",
+      "sha256": "bea0a890dfd98743f3353da4d4d37850b3d4175ba7589021cfd2382db465b6d8"
+    },
+    {
+      "bytes": 1031215,
+      "path": "outputs/tables/natural_missingness_performance.csv",
+      "sha256": "664106dda07b871d5da88fbf63f94f0925e249a770e2cdfb54bdea0676713676"
+    },
+    {
+      "bytes": 1669,
+      "path": "outputs/tables/oracle_gap_summary.csv",
+      "sha256": "beca3abad2b6d9555da02c7a8eec302fffbb1d55610fcd035b0a9102d55a180c"
+    },
+    {
+      "bytes": 19890,
+      "path": "outputs/tables/outage_specification.json",
+      "sha256": "25c779328a092f65ca054647a7cfafae80d4053da314620034488b6b76322b7b"
+    },
+    {
+      "bytes": 352162,
+      "path": "outputs/tables/paired_group_improvements.csv",
+      "sha256": "a4956f6a224b1fc9302df9ee330824e6fd089abecb6c833ce34d69affe7bd667"
+    },
+    {
+      "bytes": 517160,
+      "path": "outputs/tables/prediction_availability.csv",
+      "sha256": "c4d24be8d424277c0650f097a48b2d56684e4e78b5f6d5940bddd846faab7d8d"
+    },
+    {
+      "bytes": 27665,
+      "path": "outputs/tables/ramp_risk_diagnostics.csv",
+      "sha256": "152d826826fb5fae1602252ccddc2f3094d24c6d152ee380cf3b278775bcc542"
+    },
+    {
+      "bytes": 3849915,
+      "path": "outputs/tables/ramp_threshold_group_metrics.csv",
+      "sha256": "d91c02923ce1e25fb17ee08777b1029fc5aae543a9f6950bbfdfd07d9c460988"
+    },
+    {
+      "bytes": 16414,
+      "path": "outputs/tables/ramp_threshold_sensitivity.csv",
+      "sha256": "57e3709ce0445953eaa62df8564f3d920079d2ba904ef28fef63d661daf488a3"
+    },
+    {
+      "bytes": 10538,
+      "path": "outputs/tables/ramp_tradeoffs.csv",
+      "sha256": "2addf81fc8fa715e804722d77a6f4aed528fff254432f5ed16a8e479a732b119"
+    },
+    {
+      "bytes": 6016,
+      "path": "outputs/tables/station_data_audit.csv",
+      "sha256": "898c2d76bd850ebc258fb3f2de1789a0965daccb58fba218599928a389e04876"
+    },
+    {
+      "bytes": 6001,
+      "path": "outputs/tables/station_level_effects.csv",
+      "sha256": "ef1fa5eced61c09c98ea03bda8e69a35bf578ec3e1f48ed82752e923e13e7d8d"
+    },
+    {
+      "bytes": 18848,
+      "path": "outputs/tables/station_method_aggregate.csv",
+      "sha256": "f191430a2d3365841c263ecea2615cf788365140502b576d4a53396b6688e9c8"
+    },
+    {
+      "bytes": 5740,
+      "path": "outputs/tables/visualization_audit.json",
+      "sha256": "1e516c9e1a8c9c39efba29392ca7fa66a17fffba444c6c6e3e34680fefb9075b"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Included scientific tables and figures",
+  "source_commit": "957ac376397c80c0a811558ceaf6e3ee1608181d"
+}

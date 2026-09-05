@@ -1,0 +1,25 @@
+horizon_steps,method,delta,nominal_coverage,required_minimum_coverage,stations,expected_stations,station_set_complete,missing_stations,unexpected_stations,stations_passing,station_pass_proportion,passing_stations,failing_stations,max_station_worst_undercoverage,all_stations_pass,aggregation_unit,decision_rule
+1,robust_condition_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.549402390438247,False,station,all station worst-group undercoverage <= delta
+1,robust_condition_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.549402390438247,False,station,all station worst-group undercoverage <= delta
+1,robust_condition_cqr,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.549402390438247,False,station,all station worst-group undercoverage <= delta
+1,robust_risk_mondrian,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.46284153005464485,False,station,all station worst-group undercoverage <= delta
+1,robust_risk_mondrian,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.46284153005464485,False,station,all station worst-group undercoverage <= delta
+1,robust_risk_mondrian,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.46284153005464485,False,station,all station worst-group undercoverage <= delta
+1,robust_local_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.43005464480874317,False,station,all station worst-group undercoverage <= delta
+1,robust_local_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.43005464480874317,False,station,all station worst-group undercoverage <= delta
+1,robust_local_cqr,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.43005464480874317,False,station,all station worst-group undercoverage <= delta
+1,robust_rolling_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.5374501992031873,False,station,all station worst-group undercoverage <= delta
+1,robust_rolling_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.5374501992031873,False,station,all station worst-group undercoverage <= delta
+1,robust_rolling_cqr,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.5374501992031873,False,station,all station worst-group undercoverage <= delta
+4,robust_condition_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.41515151515151516,False,station,all station worst-group undercoverage <= delta
+4,robust_condition_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.41515151515151516,False,station,all station worst-group undercoverage <= delta
+4,robust_condition_cqr,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.41515151515151516,False,station,all station worst-group undercoverage <= delta
+4,robust_risk_mondrian,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.3502164502164502,False,station,all station worst-group undercoverage <= delta
+4,robust_risk_mondrian,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.3502164502164502,False,station,all station worst-group undercoverage <= delta
+4,robust_risk_mondrian,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.3502164502164502,False,station,all station worst-group undercoverage <= delta
+4,robust_local_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.3632034632034632,False,station,all station worst-group undercoverage <= delta
+4,robust_local_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.3632034632034632,False,station,all station worst-group undercoverage <= delta
+4,robust_local_cqr,0.15,0.9,0.75,5,5,True,,,1,0.2,CSGS7,CSGS2;CSGS5;CSGS6;CSGS8,0.3632034632034632,False,station,all station worst-group undercoverage <= delta
+4,robust_rolling_cqr,0.05,0.9,0.85,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.42380952380952386,False,station,all station worst-group undercoverage <= delta
+4,robust_rolling_cqr,0.1,0.9,0.8,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.42380952380952386,False,station,all station worst-group undercoverage <= delta
+4,robust_rolling_cqr,0.15,0.9,0.75,5,5,True,,,0,0.0,,CSGS2;CSGS5;CSGS6;CSGS7;CSGS8,0.42380952380952386,False,station,all station worst-group undercoverage <= delta

@@ -10,6 +10,20 @@ from lightgbm import LGBMRegressor
 from .conformal import conformal_quantile
 from .features import apply_condition
 
+DESCRIPTOR_CONTEXT_COLUMNS = (
+    "recent_power_missing_fraction",
+    "irradiance_missing_fraction",
+    "weather_missing_fraction",
+    "observed_context_fraction",
+    "hour_sin",
+    "hour_cos",
+    "transition_risk",
+)
+LOCAL_SCORE_OBJECTIVE = "quantile"
+LOCAL_SCORE_NUM_LEAVES = 15
+LOCAL_SCORE_REG_LAMBDA = 2.0
+LOCAL_SCORE_N_JOBS = 2
+
 
 def augment_training_set(
     x: pd.DataFrame,
@@ -121,19 +135,32 @@ def descriptor_frame(
     frame["risk"] = np.asarray(risk, dtype=float)
     frame["native_width"] = (np.asarray(upper) - np.asarray(lower)) / capacity
     frame["median_level"] = np.asarray(median) / capacity
-    for col in [
-        "recent_power_missing_fraction",
-        "irradiance_missing_fraction",
-        "weather_missing_fraction",
-        "observed_context_fraction",
-        "hour_sin",
-        "hour_cos",
-        "transition_risk",
-    ]:
+    for col in DESCRIPTOR_CONTEXT_COLUMNS:
         frame[col] = x[col].to_numpy(dtype=float)
     for label in conditions:
         frame[f"condition__{label}"] = float(condition == label)
     return frame
+
+
+def chronological_fit_adjust_masks(
+    timestamps: pd.Series | pd.DatetimeIndex | np.ndarray,
+    fit_fraction: float,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Split complete timestamps into an earlier fit block and later adjustment block."""
+
+    if not 0.0 < float(fit_fraction) < 1.0:
+        raise ValueError("fit_fraction must lie strictly between 0 and 1")
+    parsed = pd.to_datetime(pd.Series(timestamps), errors="coerce")
+    if parsed.isna().any():
+        raise ValueError("timestamps must all be valid")
+    unique_times = np.array(sorted(pd.unique(parsed)))
+    if len(unique_times) < 2:
+        raise ValueError("at least two unique timestamps are required")
+    cut = int(np.floor(len(unique_times) * float(fit_fraction)))
+    cut = min(max(cut, 1), len(unique_times) - 1)
+    fit_times = set(unique_times[:cut])
+    fit_mask = parsed.isin(fit_times).to_numpy(dtype=bool)
+    return fit_mask, ~fit_mask
 
 
 @dataclass
@@ -157,23 +184,22 @@ def fit_local_score_calibrator(
     learning_rate: float,
     seed: int,
 ) -> LocalScoreCalibrator:
-    unique_times = np.array(sorted(pd.to_datetime(calibration_frame["timestamp"]).unique()))
-    cut = int(np.floor(len(unique_times) * fit_fraction))
-    cut = min(max(cut, 1), len(unique_times) - 1)
-    fit_times = set(unique_times[:cut])
-    fit_mask = pd.to_datetime(calibration_frame["timestamp"]).isin(fit_times)
+    fit_mask, adjust_mask = chronological_fit_adjust_masks(
+        calibration_frame["timestamp"],
+        fit_fraction,
+    )
     fit = calibration_frame.loc[fit_mask]
-    adjust = calibration_frame.loc[~fit_mask]
+    adjust = calibration_frame.loc[adjust_mask]
     model = LGBMRegressor(
-        objective="quantile",
+        objective=LOCAL_SCORE_OBJECTIVE,
         alpha=1 - alpha,
         learning_rate=learning_rate,
         n_estimators=max_iter,
-        num_leaves=15,
+        num_leaves=LOCAL_SCORE_NUM_LEAVES,
         min_child_samples=min_samples_leaf,
-        reg_lambda=2.0,
+        reg_lambda=LOCAL_SCORE_REG_LAMBDA,
         verbosity=-1,
-        n_jobs=2,
+        n_jobs=LOCAL_SCORE_N_JOBS,
         random_state=seed,
     )
     model.fit(fit[descriptor_columns], fit["score"])

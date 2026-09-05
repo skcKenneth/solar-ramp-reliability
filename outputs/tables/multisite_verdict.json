@@ -1,0 +1,36 @@
+{
+  "status": "MULTISITE_CONFIRMATORY_COMPLETE",
+  "verdict": "CONFIRMATORY_EVALUATION_COMPLETE",
+  "valid_confirmatory_stations": [
+    "CSGS2",
+    "CSGS5",
+    "CSGS6",
+    "CSGS7",
+    "CSGS8"
+  ],
+  "station_count": 5,
+  "prediction_chunks": 40,
+  "conditional_metric_rows": 3200,
+  "phenomenon_station_counts_by_horizon": {
+    "1": 5,
+    "4": 5
+  },
+  "median_remaining_local_to_oracle_gap_by_horizon": {
+    "1": 0.2615725313093734,
+    "4": 0.07181328545780963
+  },
+  "candidate_comparative_gate_all_horizons": {
+    "robust_local_cqr": true,
+    "robust_risk_mondrian": false,
+    "robust_rolling_cqr": false
+  },
+  "candidate_absolute_gate_all_horizons": {
+    "robust_local_cqr": false,
+    "robust_risk_mondrian": false,
+    "robust_rolling_cqr": false
+  },
+  "method_gate_methods": [],
+  "method_superiority_claim_allowed": false,
+  "site1_counted_as_confirmation": false,
+  "runtime_seconds": 20.25
+}
