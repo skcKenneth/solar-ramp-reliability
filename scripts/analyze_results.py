@@ -679,6 +679,11 @@ def natural_missingness_chunk_performance(
                         ),
                         "eligibility_reason": reason,
                         "coverage": coverage,
+                        "issued_coverage": coverage,
+                        "service_coverage": coverage,
+                        "metric_denominator": "available_predictions",
+                        "service_denominator": "attempted_predictions",
+                        "evaluation_population": "daylight_target_and_current_power_observed_purged_test_origins",
                         "undercoverage_error": undercoverage,
                         "mean_normalized_width": width,
                         "normalized_interval_score": score,
@@ -1224,7 +1229,10 @@ def ramp_threshold_station_table(
         if expected_stations is not None
         else source["station"].astype(str).unique()
     )
-    eligible = source[source["n"] >= min_n]
+    # The endpoint over the remaining non-ramp groups is still descriptive,
+    # but cannot establish ramp-conditional reliability without ramp support.
+    eligible = source[source["n"] >= min_n].copy()
+    eligible["_is_ramp"] = eligible["ramp_group"].astype(str).eq("ramp")
 
     physical = source[(source["method"].astype(str) == baseline_name) & (source["condition"].astype(str) == "clean")]
     physical = (
@@ -1245,6 +1253,7 @@ def ramp_threshold_station_table(
         eligible.groupby(["station", "horizon_steps", "threshold", "method"], observed=True, sort=True)
         .agg(
             eligible_groups=("undercoverage_error", "size"),
+            eligible_ramp_groups=("_is_ramp", "sum"),
             worst_undercoverage=("undercoverage_error", "max"),
         )
         .reset_index()
@@ -1252,6 +1261,7 @@ def ramp_threshold_station_table(
     baseline = station_method[station_method["method"].astype(str) == baseline_name].rename(
         columns={
             "eligible_groups": "baseline_eligible_groups",
+            "eligible_ramp_groups": "baseline_eligible_ramp_groups",
             "worst_undercoverage": "baseline_worst_undercoverage",
         }
     )
@@ -1259,6 +1269,7 @@ def ramp_threshold_station_table(
         columns={
             "method": "candidate_method",
             "eligible_groups": "candidate_eligible_groups",
+            "eligible_ramp_groups": "candidate_eligible_ramp_groups",
             "worst_undercoverage": "candidate_worst_undercoverage",
         }
     )
@@ -1289,10 +1300,39 @@ def ramp_threshold_station_table(
     rows["station_improvement"] = (
         rows["baseline_worst_undercoverage"] - rows["candidate_worst_undercoverage"]
     )
+    for prefix in ("baseline", "candidate"):
+        rows[f"{prefix}_eligible_ramp_groups"] = rows[f"{prefix}_eligible_ramp_groups"].astype(int)
+        rows[f"{prefix}_eligible_non_ramp_groups"] = (
+            rows[f"{prefix}_eligible_groups"] - rows[f"{prefix}_eligible_ramp_groups"]
+        ).astype(int)
+    expected_ramp_groups = len(cfg["data"]["site1_calendar_folds"]) * len(cfg["conditions"])
+    rows["expected_ramp_groups"] = expected_ramp_groups
+    rows["ramp_support_available"] = (
+        rows["baseline_eligible_ramp_groups"].gt(0)
+        & rows["candidate_eligible_ramp_groups"].gt(0)
+    )
+    rows["ramp_support_complete"] = (
+        rows["baseline_eligible_ramp_groups"].eq(expected_ramp_groups)
+        & rows["candidate_eligible_ramp_groups"].eq(expected_ramp_groups)
+    )
+    rows["ramp_support_status"] = np.select(
+        [~rows["ramp_support_available"], rows["ramp_support_complete"]],
+        ["INSUFFICIENT_RAMP_SUPPORT", "COMPLETE_RAMP_SUPPORT"],
+        default="PARTIAL_RAMP_SUPPORT",
+    )
+    rows["eligible_group_improvement"] = rows["station_improvement"]
+    rows.loc[~rows["ramp_support_available"], "station_improvement"] = np.nan
     delta = float(cfg["decision_rules"]["absolute_reliability_gate"]["max_worst_group_undercoverage_each_horizon"])
     rows["absolute_gate_delta"] = delta
     rows["required_minimum_coverage"] = (1.0 - alpha) - delta
-    rows["candidate_absolute_gate_passed"] = rows["candidate_worst_undercoverage"] <= delta
+    rows["candidate_absolute_gate_passed"] = pd.array(
+        rows["candidate_worst_undercoverage"] <= delta, dtype="boolean"
+    )
+    rows.loc[~rows["ramp_support_available"], "candidate_absolute_gate_passed"] = pd.NA
+    rows["candidate_absolute_gate_status"] = np.where(
+        ~rows["ramp_support_available"], "INSUFFICIENT_RAMP_SUPPORT",
+        np.where(rows["candidate_worst_undercoverage"] <= delta, "PASS", "FAIL"),
+    )
     gate_keys = ["horizon_steps", "threshold", "candidate_method"]
     grouped_gate = rows.groupby(gate_keys, observed=True, sort=True)[
         "candidate_absolute_gate_passed"
@@ -1319,9 +1359,19 @@ def ramp_threshold_station_table(
         completeness_by_gate[key] for key in row_gate_keys
     ]
     rows["candidate_missing_stations"] = [missing_by_gate[key] for key in row_gate_keys]
+    support_gate = rows.groupby(gate_keys, observed=True, sort=True)["ramp_support_available"]
+    rows["candidate_stations_with_ramp_support"] = support_gate.transform("sum").astype(int)
+    rows["candidate_all_stations_ramp_evaluable"] = (
+        rows["candidate_station_set_complete"] & support_gate.transform("all")
+    )
     rows["candidate_all_stations_absolute_gate_passed"] = (
-        rows["candidate_station_set_complete"]
+        rows["candidate_all_stations_ramp_evaluable"]
         & grouped_gate.transform("all").astype(bool)
+    )
+    rows["candidate_all_stations_gate_status"] = np.where(
+        ~rows["candidate_station_set_complete"], "INCOMPLETE_STATION_SET",
+        np.where(~rows["candidate_all_stations_ramp_evaluable"], "INSUFFICIENT_RAMP_SUPPORT",
+                 np.where(rows["candidate_all_stations_absolute_gate_passed"], "PASS", "FAIL")),
     )
     nominal = {
         int(key): float(value)
@@ -1333,6 +1383,7 @@ def ramp_threshold_station_table(
     )
     rows["minimum_group_n"] = min_n
     rows["aggregation_unit"] = "station"
+    rows["sensitivity_scope"] = "no_refit_relabel_saved_nominal_predictions"
     return rows.sort_values(["horizon_steps", "threshold", "candidate_method", "station"]).reset_index(drop=True)
 
 

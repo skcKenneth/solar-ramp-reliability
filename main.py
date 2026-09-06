@@ -11,10 +11,11 @@ CONFIG = "configs/experiment.yaml"
 COMMANDS = {
     "audit": ["scripts/audit_data.py"],
     "smoke": ["scripts/run_all.py", "--smoke"],
-    "run": ["scripts/run_all.py", "--force"],
+    "run": ["scripts/run_all.py"],
     "aggregate": ["scripts/aggregate_results.py"],
     "analyze": ["scripts/analyze_results.py"],
     "figures": ["scripts/render_figures.py"],
+    "verify": ["scripts/verify_results.py"],
 }
 
 
@@ -28,7 +29,11 @@ def main() -> int:
         return 0
     script, *extra = COMMANDS[args.command]
     command = [sys.executable, str(ROOT / script), "--config", args.config, *extra]
-    return subprocess.run(command, cwd=ROOT, check=False).returncode
+    status = subprocess.run(command, cwd=ROOT, check=False).returncode
+    if status == 0 and args.command != "verify":
+        from scripts.update_output_manifest import update_manifest
+        update_manifest(ROOT)
+    return status
 
 
 if __name__ == "__main__":

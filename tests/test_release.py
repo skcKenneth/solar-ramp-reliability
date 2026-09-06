@@ -32,7 +32,7 @@ def test_output_manifest_covers_every_result() -> None:
     payload = json.loads((ROOT / "OUTPUT_MANIFEST.json").read_text(encoding="utf-8"))
     records = payload["outputs"]
     actual = sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "outputs").rglob("*") if path.is_file())
-    assert payload["output_count"] == len(records) == len(actual) == 32
+    assert payload["output_count"] == len(records) == len(actual) == 33
     assert [record["path"] for record in records] == actual
     for record in records:
         data = (ROOT / record["path"]).read_bytes()

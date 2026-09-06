@@ -139,24 +139,24 @@
       "sha256": "6a7acb05a4eb2ed76614849466f4bc1d5e5e95409c924a5b4382312f22cd1b9b"
     },
     {
-      "bytes": 5500,
+      "bytes": 5483,
       "path": "outputs/tables/method_tradeoffs.csv",
-      "sha256": "96c4419340c47d4a2552f6e343db27f13c74156d2b42d16227c4e6902a0fbe46"
+      "sha256": "fe3c8ae176506310f7c516f44a8b9df0aa33221b47100542e7080203c2049290"
     },
     {
-      "bytes": 951,
+      "bytes": 916,
       "path": "outputs/tables/multisite_verdict.json",
-      "sha256": "ff7ef9496062411738c73154b0886da55a41c2164953de38df5d8ef551f7494c"
+      "sha256": "a3975e4d5745b72a50c3fa3b6bdb23bcca296afc6d4abaf0b63fc82e09fa4d06"
     },
     {
-      "bytes": 6016,
+      "bytes": 6007,
       "path": "outputs/tables/station_data_audit.csv",
-      "sha256": "898c2d76bd850ebc258fb3f2de1789a0965daccb58fba218599928a389e04876"
+      "sha256": "bedf7d2d026f894554201310b6ee9c46cb6d9e27bd4e4a75214957abd9edce34"
     },
     {
-      "bytes": 6001,
+      "bytes": 5960,
       "path": "outputs/tables/station_level_effects.csv",
-      "sha256": "ef1fa5eced61c09c98ea03bda8e69a35bf578ec3e1f48ed82752e923e13e7d8d"
+      "sha256": "d5700b5dc755fd4aa43f5de7ca06551ade2fae8ab5bf9dc93bc2686917168cf2"
     },
     {
       "bytes": 49834,

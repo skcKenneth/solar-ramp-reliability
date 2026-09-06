@@ -1,0 +1,1545 @@
+{
+  "upstream_HEAD": "532dd54eabbf17bd0f0b7af1d08e2ae6ffef2596",
+  "prior_run_reused": true,
+  "current_turn_refitted_jobs": 0,
+  "model_execution_source_sha256": "5c10cf67cbc32d8a9c8bcec2c25ee94ff2dc14848b0fe2f772647999e02bfb78",
+  "config_sha256": "6a7acb05a4eb2ed76614849466f4bc1d5e5e95409c924a5b4382312f22cd1b9b",
+  "validated_jobs": [
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q1_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "e503eb31f77851247c798a3dd5a004c39633beabc756621aacea1bd9b295e306",
+      "seeds": {
+        "clean_model": 1409485249,
+        "lgbm_model": 1155690353,
+        "augmentation": 3873602653,
+        "robust_model": 1479091622,
+        "ramp_risk_model": 2217454947,
+        "local_calibrator": 2858347534
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q1_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4981471,
+          "sha256": "67d7091b1fc5cc482bd98339bb8aa8f06b3c1ac76074caa6472edd606382555a"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1055,
+          "sha256": "14f02b475ed02a1e5cc41ee2f28fe90e7b316f6f3dd457f0d6fd750ebe58b861"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1537,
+          "sha256": "5c76c568b20719de6bc87327b73f4857ca910f599785b2154f6c7d7ce790fded"
+        }
+      ],
+      "train_ramp_prevalence": 0.0466,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q1_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "6d2875e8f9793974ae42d62aae38b16b54736578ea0d8039af9ebfe0db441d3b",
+      "seeds": {
+        "clean_model": 209145772,
+        "lgbm_model": 649945359,
+        "augmentation": 64435262,
+        "robust_model": 204458135,
+        "ramp_risk_model": 2983771325,
+        "local_calibrator": 1976538398
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q1_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4940454,
+          "sha256": "81cc29cd41d50cfe32c2ead795d8eb851327d88c1b494a260a08c6df9ed1491b"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1048,
+          "sha256": "6155f83bcd7d2a8c4f6a52bc18d8723b5d55bac654eb391ead2b887d32a8ba2f"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1560,
+          "sha256": "c9f2708ea343708eee6269c63e25352936c40901bfb689b49d32741aa4438db2"
+        }
+      ],
+      "train_ramp_prevalence": 0.0951,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q2_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "593f357aafeaf061840bd94772f2d5ed571c309ce6d98768c94ca2bb6a0ba568",
+      "seeds": {
+        "clean_model": 335211044,
+        "lgbm_model": 3664333717,
+        "augmentation": 2733591905,
+        "robust_model": 2078815411,
+        "ramp_risk_model": 224923167,
+        "local_calibrator": 3363456920
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q2_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 5094143,
+          "sha256": "dea27b579ec331b114c5d5e359b226f3df0387a57339fdb59c4477c9c45cc915"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "bb3cef4151c6cf8016d70e188a08d2bd90a05449fc35aed91bd5f2eaaa9f34e9"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1510,
+          "sha256": "9840fd5dfe5cf5077ae76e8582c8554f986ca99cf12ba5884d4df8adb3f71c66"
+        }
+      ],
+      "train_ramp_prevalence": 0.0529,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q2_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "b430a4e6cad7649cce1b9cb1875a1b203804edeeb7c36be05213d8437d96e931",
+      "seeds": {
+        "clean_model": 2650512659,
+        "lgbm_model": 3379904334,
+        "augmentation": 2560290048,
+        "robust_model": 2943838893,
+        "ramp_risk_model": 1813831901,
+        "local_calibrator": 2018043287
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q2_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 5109430,
+          "sha256": "f9d283aca0dd887002a15a7d78a302f50752716f6430caaedabdd8571018d29c"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1054,
+          "sha256": "e88dd04d11ca9a6f6b673e9f4b5eee8451ae9c0d54472754e100e024ac29612a"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1519,
+          "sha256": "77e432b932f79f6f357c1b39aa3a66d62f9f189776a05f25657035e41b3ab3ed"
+        }
+      ],
+      "train_ramp_prevalence": 0.1081,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q3_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "f57f3c08dd4ec11c984697abc26a1d3b23a39fcbbeee896229dadaece8c21cdd",
+      "seeds": {
+        "clean_model": 917354157,
+        "lgbm_model": 1633179858,
+        "augmentation": 1973842985,
+        "robust_model": 1986401162,
+        "ramp_risk_model": 3067822002,
+        "local_calibrator": 1037151884
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q3_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 5107333,
+          "sha256": "a9bc3aaae323b820c536f5c8deb1f1e447f93ecd943b7edf28a61f7924717628"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "5f41630effc57f9c3f4f9815ebae1592bd67173c1d1d06898a0c081a92280041"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1548,
+          "sha256": "32a1bf4b12a2c672ba2b37a81bd4f189379f5676d7e16898011f4e9e7e1c4dda"
+        }
+      ],
+      "train_ramp_prevalence": 0.0499,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q3_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "bf6042f6466066c8ef55cdc6dd93746e9ef34528c40ff2fcf5601fb8e87946e8",
+      "seeds": {
+        "clean_model": 3690011847,
+        "lgbm_model": 3936820977,
+        "augmentation": 3870166357,
+        "robust_model": 1342701152,
+        "ramp_risk_model": 1084416877,
+        "local_calibrator": 472332854
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q3_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 5078914,
+          "sha256": "6e974b611a74b0cba043f65a347ff68f77423d4f7c0121b79ed5cc99b2f250b5"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "c1f6f75d6d92ca4c70eabdab35a3fb0e9631ce32c3e0f22f7128f08eda99d0b3"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1561,
+          "sha256": "c926fe10b46740e49ed4990fc516557f51050140e059091e9eeeff36b9a56982"
+        }
+      ],
+      "train_ramp_prevalence": 0.1034,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q4_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "b7e1c8c9ae077c007f39cef227f34dd1f4ff1b0f057414e026b1046e6b015929",
+      "seeds": {
+        "clean_model": 3219683242,
+        "lgbm_model": 2345332399,
+        "augmentation": 3692781612,
+        "robust_model": 2812675796,
+        "ramp_risk_model": 1552785539,
+        "local_calibrator": 2726937698
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q4_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4981299,
+          "sha256": "2e2351a9a3c2983c4280d70c55ae04b8785ab151476df8372778f9be406d68e1"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1055,
+          "sha256": "a55237046bd75838597d396b9dc3561e6eb4076b5672af3d8d1392fe7db1dace"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1574,
+          "sha256": "7e0111557c5918f05519fa3745c42411b17496eabbbe34b4b7ca8ef055f43681"
+        }
+      ],
+      "train_ramp_prevalence": 0.0498,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS2",
+        "fold": "q4_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "ecfbc47c309471663f2ac6c74077fe914e9b337a499604c1918b87a0f1e8fe1f",
+      "seeds": {
+        "clean_model": 1160944421,
+        "lgbm_model": 4052405498,
+        "augmentation": 1760104457,
+        "robust_model": 2747888253,
+        "ramp_risk_model": 2480555409,
+        "local_calibrator": 2981797987
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/predictions_q4_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4937165,
+          "sha256": "c645e2dd9b54595370608450cb15c7dd49ca5ecf0f51a505ca0341abb2abccec"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/run_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1054,
+          "sha256": "4bbd850e41cb04c41d207cbeb49deff5d5e2e982964378b3aed5cf61f5ca9380"
+        },
+        {
+          "path": "work/results/stations/CSGS2/cache/chunks/calibration_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1562,
+          "sha256": "17b7cd8923820ec43090a21f6aaa1f455fd43ddd756522163b24adea35de3ba5"
+        }
+      ],
+      "train_ramp_prevalence": 0.1045,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q1_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "6111519deb63c2fb78d707c8f81e5ed690ff2ae010a649c38eb84db3edab8ab5",
+      "seeds": {
+        "clean_model": 2266857442,
+        "lgbm_model": 2344505696,
+        "augmentation": 4043789327,
+        "robust_model": 2032305008,
+        "ramp_risk_model": 3376937038,
+        "local_calibrator": 2709942181
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q1_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 1497361,
+          "sha256": "e0d11aee4e17af756c05abd4006c781c0eb2669e2a48f551688e4847e09a3847"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "708eb27077aafa519d851f3973f0ce56bf48cc22b97a7b54b9a9b241aebf630f"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1478,
+          "sha256": "4eb4afd1a9dee562140b9cdabd895de314bfe5600f266f5a36d3ed8552271deb"
+        }
+      ],
+      "train_ramp_prevalence": 0.092,
+      "test_rows": 3706
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q1_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "ffe47d503d04ec065cb776e640aa30596869c0017d0524e1b7c81e7b77d63eee",
+      "seeds": {
+        "clean_model": 876934262,
+        "lgbm_model": 1754382843,
+        "augmentation": 3377511493,
+        "robust_model": 728257657,
+        "ramp_risk_model": 112407699,
+        "local_calibrator": 2547974171
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q1_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 1537986,
+          "sha256": "8ee5844e78a1ad2853aaface5fc62ff48cdd7bb0c8be2cb7c29f75a9aefefc68"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1051,
+          "sha256": "d903820033b02972479e554aa29684c561e5272dae0a28600ec75be3e494a4c6"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1579,
+          "sha256": "bd1b90021adb748daab14eadbd79efeaac9e2d346da620f5b5308bfd0cf84184"
+        }
+      ],
+      "train_ramp_prevalence": 0.0991,
+      "test_rows": 3439
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q2_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "924bb897d26047354b9f6dba99e6aabaacd10290177ca8eab2a7d05997c76284",
+      "seeds": {
+        "clean_model": 3752164670,
+        "lgbm_model": 737437446,
+        "augmentation": 692523790,
+        "robust_model": 156793019,
+        "ramp_risk_model": 3680570500,
+        "local_calibrator": 3465931584
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q2_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4118147,
+          "sha256": "fb9e5ae71a950a3cc1a06718837222cc271316ad9a3f3f1e8200976af3a8b1bc"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1050,
+          "sha256": "63628461359fd04c8b9f965a401f1ce03b59c5095055a3c5d6cfe9e92d76bfd4"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1567,
+          "sha256": "bf768507cfdc985682cc1385eb785b486275777e6b2c3120e2a7abdaa80cf5e9"
+        }
+      ],
+      "train_ramp_prevalence": 0.0781,
+      "test_rows": 4698
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q2_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "fdb571bb06befc7e66922c51167b95d767c0b42397525f2e8e87561f5a5502a9",
+      "seeds": {
+        "clean_model": 1113631223,
+        "lgbm_model": 432409590,
+        "augmentation": 1905890829,
+        "robust_model": 3361304803,
+        "ramp_risk_model": 2280541729,
+        "local_calibrator": 914102814
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q2_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 3863502,
+          "sha256": "822c2a55795f2e93a8c00c0f1c5db8089161f66651312e439c6d50e26ebfc2b5"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "0c27c2a073be432a23e42e1f01cfd6d383d2c3c80648e4149b97a4e2a660bda0"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1521,
+          "sha256": "21739acf9eadab261bcc210c86f9315884fed88f1798a8d2ba74767d1a8528eb"
+        }
+      ],
+      "train_ramp_prevalence": 0.0955,
+      "test_rows": 4426
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q3_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "d9343dd43e30666feddb49dbca4a4892c897aac98d8d77b597eaa3ffe75e3e26",
+      "seeds": {
+        "clean_model": 2066965459,
+        "lgbm_model": 4108267785,
+        "augmentation": 1433676405,
+        "robust_model": 3638328341,
+        "ramp_risk_model": 3194022312,
+        "local_calibrator": 1656191507
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q3_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4048464,
+          "sha256": "35cdd0b86e2322aefdfdbc7f0709295f2a6154d2e57d48a487bceb7937f8bc13"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "ad3ed3fa97148a11ff52e5d7bbd69497647013a36dc95425a86c6b473d8f7605"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1508,
+          "sha256": "4d96729ab595109e807ebfead903fbb58ae5acf93455018947b1524e7d8bd3bf"
+        }
+      ],
+      "train_ramp_prevalence": 0.0833,
+      "test_rows": 4594
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q3_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "939a1164dfad9020f27a1f927b5063e38f21dfceddf52990b1d79a37ee6e7427",
+      "seeds": {
+        "clean_model": 2409501369,
+        "lgbm_model": 3890189708,
+        "augmentation": 3380121391,
+        "robust_model": 1082606131,
+        "ramp_risk_model": 4054991451,
+        "local_calibrator": 502689074
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q3_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 3800555,
+          "sha256": "f283314e2a19292ebf3ea80e722e633eff2033cc4d7564cdb7fd7ebc34d33c35"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "d3dd12770b627b103a6053424a3f59fc9635b43ad8edd5a9dc9ffb44de1d93bb"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1575,
+          "sha256": "77a6f2f15b7871b25be698142d0181da6410f544eafc4d01ace2d6d006167cc2"
+        }
+      ],
+      "train_ramp_prevalence": 0.1053,
+      "test_rows": 4320
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q4_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "3542ce6348d640a5b562b5ab1f9dfbd5e805b27f54468a68d495e7bc1c898339",
+      "seeds": {
+        "clean_model": 3616875960,
+        "lgbm_model": 2955162070,
+        "augmentation": 3103920624,
+        "robust_model": 601187194,
+        "ramp_risk_model": 520445242,
+        "local_calibrator": 573201499
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q4_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 1636566,
+          "sha256": "c300b9257830b1268604d874324a75cc3b0b86a250ae0fa516d97456e3667dba"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1050,
+          "sha256": "fa993286e380ab685dcd5278306244bcf7c58b3303d2b5f7c4e56870253f7019"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1581,
+          "sha256": "2823f592d03dfac900901c2757cc728f46b36d63c4991765d931306bf87ad35f"
+        }
+      ],
+      "train_ramp_prevalence": 0.0904,
+      "test_rows": 3669
+    },
+    {
+      "job": {
+        "station": "CSGS5",
+        "fold": "q4_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "542b5051feeff0ae9a7e44546ec01c2117fa9e17cf684df6712f0d48b109ffab",
+      "seeds": {
+        "clean_model": 2126817061,
+        "lgbm_model": 842851950,
+        "augmentation": 277562691,
+        "robust_model": 4172639109,
+        "ramp_risk_model": 1159522292,
+        "local_calibrator": 2329135349
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/predictions_q4_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 1530652,
+          "sha256": "2ea1ed99ca860299cc4bd69b65cba4bfe95d8a59d3ad8be5f824b85854e4c5cb"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/run_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "b0b0eb1a437009cfe7bbdb83889a1bfe49190d759d6060db4622949d542255f1"
+        },
+        {
+          "path": "work/results/stations/CSGS5/cache/chunks/calibration_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1543,
+          "sha256": "7186432ec56ea5fa8ec0f76af84e3d6a4a454f04843e75878116d6b40ced8405"
+        }
+      ],
+      "train_ramp_prevalence": 0.1121,
+      "test_rows": 3393
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q1_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "ee83d4c760c28884f64be37690b31b9ad1c84aca7609e85b36379f46200598f3",
+      "seeds": {
+        "clean_model": 504088368,
+        "lgbm_model": 3823081724,
+        "augmentation": 122667754,
+        "robust_model": 2755277740,
+        "ramp_risk_model": 2922851082,
+        "local_calibrator": 3525331896
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q1_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4289951,
+          "sha256": "bb1a65ac4c57d5e598eda5bc3d0e0b533baab6daadd5a93c06b19a39728c2958"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "ee4e9f0810624bc85f0f182d136afd4e44f4ce9f3f0f58892542efac23d5787e"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1506,
+          "sha256": "a84e398d72ae035e0573ed1964a56bcfd15572b14f549cde869efd28a9102d66"
+        }
+      ],
+      "train_ramp_prevalence": 0.0736,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q1_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "2f08878c96f45fad260fcfb3ff3e4ca3ededb334a58e411d896c08d238a5f242",
+      "seeds": {
+        "clean_model": 2199401552,
+        "lgbm_model": 504004374,
+        "augmentation": 3096398046,
+        "robust_model": 1528275368,
+        "ramp_risk_model": 2632093320,
+        "local_calibrator": 267625918
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q1_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4524482,
+          "sha256": "68136c2f193bb66c3a80614acaa42a6ce5577a222d0f4d4ac06e8fe367dd6999"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1051,
+          "sha256": "7b182eb579a479a7bee93210945369b582678e712d9223104cd5bee18d0512be"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1551,
+          "sha256": "ad1757461d6159ce8d352994d96a46d2452ce70617c158b7566e07d0eb55f183"
+        }
+      ],
+      "train_ramp_prevalence": 0.153,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q2_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "acf8d6e546fa6098bfe60ecd8f35778ef8e413879396f024ababdf238f84368f",
+      "seeds": {
+        "clean_model": 2918972391,
+        "lgbm_model": 236055837,
+        "augmentation": 3844882888,
+        "robust_model": 1718433581,
+        "ramp_risk_model": 812438015,
+        "local_calibrator": 2760120559
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q2_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4592989,
+          "sha256": "adac8d053bbe5a37145c72a4e0a82f136ee1752064a727b054ba26c04a5c8af4"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "be300300c2518bed34283a59349d4555e35f092f00ff95377bc5a3d1dcd347ec"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1511,
+          "sha256": "2fd2e368f1dc447c9e472e5db2c3762c41c539a4c95c631babadc26f2e6e10bb"
+        }
+      ],
+      "train_ramp_prevalence": 0.0702,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q2_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "d3919589d29523da37309e77d3992fcf3b7cdb23c2a34c3408e20e3e2467de58",
+      "seeds": {
+        "clean_model": 2976048813,
+        "lgbm_model": 2418272289,
+        "augmentation": 1304586536,
+        "robust_model": 3788908496,
+        "ramp_risk_model": 287348782,
+        "local_calibrator": 802015092
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q2_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4838690,
+          "sha256": "f4be1ee6862ff8afc1ffb93dfa2d112dc4ed84db1b8b4305163fca7f74e0e55e"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1038,
+          "sha256": "0ad0d9cde26baed410c5332b6ffdc71d0dd312d0cc81b5198f9b99a5cfc58eb1"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1554,
+          "sha256": "cc173bf9a1b1c356de4549438ed5cc62178b27d4a630b27a600d5ad36d6929d1"
+        }
+      ],
+      "train_ramp_prevalence": 0.1641,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q3_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "ddd6208f365c4bd4f95308dc3238c43b906bd9ff27c045a7d0a6a361385fdf08",
+      "seeds": {
+        "clean_model": 3608889035,
+        "lgbm_model": 4127042050,
+        "augmentation": 1850493168,
+        "robust_model": 91665820,
+        "ramp_risk_model": 3023025517,
+        "local_calibrator": 3853907030
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q3_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4789267,
+          "sha256": "4fec5653d338501d153be78da61f0320c1e338d62324d9b8b2f9eb27f232e5fa"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "641a86bac5e10a36cc07a3056d8d0b75ea2df277f20f71c20ba6389494d713e3"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1562,
+          "sha256": "1eb6fdb72cf04b745519ac5c35f9056e1c1f622fc3d34fd29ff335e3f349f0e9"
+        }
+      ],
+      "train_ramp_prevalence": 0.0678,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q3_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "201c70c2d71d20ca6b0166fe73ac667995a86799aac4eba869cb0644a7cac094",
+      "seeds": {
+        "clean_model": 1158981065,
+        "lgbm_model": 847115305,
+        "augmentation": 4184527183,
+        "robust_model": 4038943044,
+        "ramp_risk_model": 1951496441,
+        "local_calibrator": 105784043
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q3_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4854131,
+          "sha256": "d42289e59ea527945b60bc83d759640c1fa987e3a4a06b4368050432e8fdddef"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1038,
+          "sha256": "8f1d312ede1889c24c3079eebfc92a3d5e397b1642159f1b649989b9168fb6fd"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1577,
+          "sha256": "dbe1a5c900446b0e5dbd83c3329ea8e74ec796d1976333187aabeb5b0edd14bb"
+        }
+      ],
+      "train_ramp_prevalence": 0.1707,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q4_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "16ded58a39a7a8d02554a4d18e44c631d4b55be672ba6aca40d37ea40e888076",
+      "seeds": {
+        "clean_model": 3523335071,
+        "lgbm_model": 3349545415,
+        "augmentation": 3666841516,
+        "robust_model": 600209065,
+        "ramp_risk_model": 2015941578,
+        "local_calibrator": 1893156727
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q4_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4482251,
+          "sha256": "6c411cc7578dba5e3efdc3f405494b6f4b9e082bac89a9a959dda8f9c50ff32a"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1054,
+          "sha256": "32be06879040b76c111ce947fc0942f05d6b6f43a6bba49c6bceb9170eb7071b"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1590,
+          "sha256": "d903c3362c22c121f877858512d523d275366285b83f693970809674fe71be2e"
+        }
+      ],
+      "train_ramp_prevalence": 0.0729,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS6",
+        "fold": "q4_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "6d31ba43ecd8936e4ee3c6b4c8c1d85ceecf7738cf4406fbe0c3375fe5d60e27",
+      "seeds": {
+        "clean_model": 3061899662,
+        "lgbm_model": 569374756,
+        "augmentation": 1971481051,
+        "robust_model": 3326039849,
+        "ramp_risk_model": 2591640044,
+        "local_calibrator": 2984589083
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/predictions_q4_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4520242,
+          "sha256": "f0fe7bcc1f33dfe9f9dad53caae59998aac53ce8d8b6e6f40ce0f3d92c11e467"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/run_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "6c9c4ad1602a95ac61dba464051fb39aae74c8d061e4fb27903c5f69de3c7d0c"
+        },
+        {
+          "path": "work/results/stations/CSGS6/cache/chunks/calibration_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1587,
+          "sha256": "f13c2301997ced8393b7f58c0424ea37f1dd8c0fb6d9cb596ded17584f8a0d9e"
+        }
+      ],
+      "train_ramp_prevalence": 0.1644,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q1_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "6535f59d841d1d2a5406ec0b1a85efbf2fd24ad631460aeb3951e72c84278e2a",
+      "seeds": {
+        "clean_model": 1127084004,
+        "lgbm_model": 430301053,
+        "augmentation": 2029032970,
+        "robust_model": 2773954161,
+        "ramp_risk_model": 1107548819,
+        "local_calibrator": 208635710
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q1_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4326640,
+          "sha256": "3faeee5a46c2a67bc2a201dd7ff0219183be1e11249251a2c5fd2248daa2bbc3"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "b7f2f4f5408a59a2a4d580c5f5d6d811fcd474c01387a1ee1b0bed066279e42f"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1514,
+          "sha256": "91b108d737feb358f981d64410ab2aadb4cc3c947509cc79d78739a4b92cb610"
+        }
+      ],
+      "train_ramp_prevalence": 0.1096,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q1_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "d320a5f71d5e1c80299375be968264d5838c4e567f31e175d6f0199d490218ca",
+      "seeds": {
+        "clean_model": 3960114400,
+        "lgbm_model": 2261665352,
+        "augmentation": 3790931594,
+        "robust_model": 1142072541,
+        "ramp_risk_model": 3077878951,
+        "local_calibrator": 2352048577
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q1_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4496017,
+          "sha256": "a2aecf43f755b757df03c2926e5f10a18dc5233e72a39bff46ccec4c562cf59d"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "7d11cd4754f1417b48dbf9db4fa0295e1ded43746d06adf18fda8565adb3aeb8"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1556,
+          "sha256": "6395fe071a9d54707de69344674efec1ff2fdde3c68d01e469f2d6aa358395a0"
+        }
+      ],
+      "train_ramp_prevalence": 0.1955,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q2_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "7a10f41117effdb9314de7aab036475b3c6d3a5027ddeb31ddf3ae0a3a5ec261",
+      "seeds": {
+        "clean_model": 435477161,
+        "lgbm_model": 465048468,
+        "augmentation": 4077830961,
+        "robust_model": 81656050,
+        "ramp_risk_model": 108192384,
+        "local_calibrator": 2644041542
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q2_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4514510,
+          "sha256": "c5a2a749b7de69829bd916ccd535fda9fc6bebfb1993d8f7d2078cda5bbd1359"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1049,
+          "sha256": "0c693badaf21dc27aed48bfb3138030abd7ac032245f9bdf025ccdb4c140aece"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1462,
+          "sha256": "f13b3f96c64ca391203a2db04478522ce659cc2fcb02f0cad61564ec200cadd7"
+        }
+      ],
+      "train_ramp_prevalence": 0.1102,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q2_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "c6dcef3fb6db2908b80fab69e10da01a73a245c27c448336fcedca4415b2ba53",
+      "seeds": {
+        "clean_model": 1663335681,
+        "lgbm_model": 2122078274,
+        "augmentation": 1697823774,
+        "robust_model": 958065846,
+        "ramp_risk_model": 3217008594,
+        "local_calibrator": 2066478157
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q2_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4731508,
+          "sha256": "1ce599fe07f066cf9b0f49ba10231e822e79c0bf1bf43f8581907260a147a265"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1051,
+          "sha256": "085bfe493ba153aa7852545107d64b18a47a05f8bbb3b8984f6775f04dc6a836"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1571,
+          "sha256": "b4f935420abaf3c4f0bfc8bc4d2d178bf2d8b111cfd57252934e9846c285bcba"
+        }
+      ],
+      "train_ramp_prevalence": 0.2047,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q3_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "38a4d48f6fc609824c1046fc8d0aa5d4efce260cb6cc6c6d4a8f0016b08bc28f",
+      "seeds": {
+        "clean_model": 3853094854,
+        "lgbm_model": 4092511530,
+        "augmentation": 3545822356,
+        "robust_model": 1830541469,
+        "ramp_risk_model": 281540404,
+        "local_calibrator": 1549329873
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q3_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4649524,
+          "sha256": "be7938592244bfac22b2bca2b1deb62c6e1d5a7e8bbe1e07d02be51d2b25356a"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "779e5e6bda02f48e0d2edd0628ff8ad97e807deda97901e7c9674cb72f2ef0fe"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1478,
+          "sha256": "2168674ad9cac82a4a922ce04d1289ca224d0892b93da8dd6c90b90e46316880"
+        }
+      ],
+      "train_ramp_prevalence": 0.1093,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q3_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "f2319f11d6c6fcf38aebfc79ca389b3bfdd1045893ad6c7d60a87090723bff5f",
+      "seeds": {
+        "clean_model": 3460069568,
+        "lgbm_model": 1562425989,
+        "augmentation": 2258807915,
+        "robust_model": 1801597130,
+        "ramp_risk_model": 3448610057,
+        "local_calibrator": 2016664284
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q3_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4803962,
+          "sha256": "f85d3dafa8f0494b9560a0dc4611add949680346fb36337dd147cfea1e3989de"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "4d2fea0df3cdbbf2d242fd4545a4c3aa2b2074c7c1577d4f493075c13cf59a58"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1502,
+          "sha256": "9f8ce5b24ee1938897d294430c4e0190448a41db5afad9a130819394a8d0fa96"
+        }
+      ],
+      "train_ramp_prevalence": 0.2134,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q4_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "88e20d54ba02fc19220c71a2bc4663dbc844cf7b3d418c494c216c00218cff83",
+      "seeds": {
+        "clean_model": 1951542813,
+        "lgbm_model": 3776567452,
+        "augmentation": 84848398,
+        "robust_model": 2848660871,
+        "ramp_risk_model": 1089717309,
+        "local_calibrator": 3256319458
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q4_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4244388,
+          "sha256": "9fee03d5c12c23103305225f30abb48d84ddf66b2d409960054e67592b93944e"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1052,
+          "sha256": "802cbdae582bd6037b0bacbad82336ffbd2012e1b4347ad25e7b4f264cecd2ee"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1564,
+          "sha256": "1ab887e0cb28f76a186a40f8bbb1edcfa9373f33c60b673a26ed6a258c67f4df"
+        }
+      ],
+      "train_ramp_prevalence": 0.1147,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS7",
+        "fold": "q4_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "53dde8efc71dd8e201e213e0b70f8815faf5e0c2251534f0fcf33a21353a71bf",
+      "seeds": {
+        "clean_model": 3057256189,
+        "lgbm_model": 1508156125,
+        "augmentation": 1371215222,
+        "robust_model": 1408315483,
+        "ramp_risk_model": 648653392,
+        "local_calibrator": 3691030012
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/predictions_q4_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4350010,
+          "sha256": "bf620873f56daef47491b704d66dc65d865bdfa56e117551f09fe462c045b5b5"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/run_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "5999e460825a854289fcd90ba52bb062db6375633a42581fd82e740781cb2158"
+        },
+        {
+          "path": "work/results/stations/CSGS7/cache/chunks/calibration_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1554,
+          "sha256": "e3d229ec9772f99e947277d0a46b3efc20fcb1cf2a86363c1e0991854fde7029"
+        }
+      ],
+      "train_ramp_prevalence": 0.2077,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q1_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "b0ccace52a506197a3c652f75d38750902c5d3b7c042cbdf2df3f1ecb3a06621",
+      "seeds": {
+        "clean_model": 2801773953,
+        "lgbm_model": 1437128737,
+        "augmentation": 1732480093,
+        "robust_model": 1351707342,
+        "ramp_risk_model": 4145602299,
+        "local_calibrator": 3131802386
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q1_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4366493,
+          "sha256": "fdfb4bafd66bcdd1d62e18eca1f1899c91a2df74c7ab0d60f63b3ed9fb9ae288"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1055,
+          "sha256": "cd60e53924b95a0b4cfe1a6c6cff021d87f5addc49619a97581f2dd0dd9bebbb"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q1_2020_h1.csv",
+          "exists": true,
+          "bytes": 1519,
+          "sha256": "92f95b6e7f18d76eecf54b7b9abdd8a1d748dd75a7bd7f98ffe8d293fcc63ed8"
+        }
+      ],
+      "train_ramp_prevalence": 0.0423,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q1_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "9b19ff868babc1bc8554867ae87abbc45ee20e908ab7e785d9daeccbfe722337",
+      "seeds": {
+        "clean_model": 2129899486,
+        "lgbm_model": 1316753388,
+        "augmentation": 3890513093,
+        "robust_model": 2021042903,
+        "ramp_risk_model": 3303917205,
+        "local_calibrator": 2035745560
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q1_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4441325,
+          "sha256": "3104c7330d504ff8636817544365d4245d14e385c2a6dad32f8059530f97fb03"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1055,
+          "sha256": "272b5aed4ab360a48acdf47a05c56b02a6cdc99583d8b311812209547abc0bd6"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q1_2020_h4.csv",
+          "exists": true,
+          "bytes": 1547,
+          "sha256": "f41480000f07749f1c8632bea697732c0e2b9ddc240106717e5f0ff938f4e4f0"
+        }
+      ],
+      "train_ramp_prevalence": 0.0657,
+      "test_rows": 5824
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q2_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "7838dad5a15d1eb92b4b0e8048c06020376222749e93636778af12ec80c1090e",
+      "seeds": {
+        "clean_model": 2290977646,
+        "lgbm_model": 3178788707,
+        "augmentation": 3324683868,
+        "robust_model": 4049607157,
+        "ramp_risk_model": 4165668596,
+        "local_calibrator": 110221879
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q2_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4508767,
+          "sha256": "87828eaa6710be802d3ab0cdb95f6ddb0c7a5503c10b813d9bb648f535775e07"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1055,
+          "sha256": "2329a37fc29332301fed90d97e0cf87aa10d0082184321af7005b5a8742f4384"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q2_2020_h1.csv",
+          "exists": true,
+          "bytes": 1521,
+          "sha256": "e9a275440013a42d4149e280ed4f2b61489cd127b0a50f1d87d9d2d6a4912e05"
+        }
+      ],
+      "train_ramp_prevalence": 0.0477,
+      "test_rows": 5760
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q2_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "5cd61347da14c611d53b25ff95840045fc863f9829f36e121fe21110a6ee3aa4",
+      "seeds": {
+        "clean_model": 1768919745,
+        "lgbm_model": 3421155286,
+        "augmentation": 228122343,
+        "robust_model": 3337122753,
+        "ramp_risk_model": 1804908655,
+        "local_calibrator": 494377682
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q2_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4654025,
+          "sha256": "72d7a227b892a1d26f1e8b5278042377399b6f3ff68ea403e1961b3c6b7c3d3e"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "3f08d8458149160538b7fa834abb2009b2745139b698099fb66d4ed388678361"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q2_2020_h4.csv",
+          "exists": true,
+          "bytes": 1568,
+          "sha256": "1f106fa506dd06cf1c1be121982021db86c2a17d19beca18c3143c956dea72be"
+        }
+      ],
+      "train_ramp_prevalence": 0.0786,
+      "test_rows": 5760
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q3_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "5f6a61cccbbad613674c24572f94bd3b24783e1ebc6d2fad548f9f2784bc89c7",
+      "seeds": {
+        "clean_model": 3044164691,
+        "lgbm_model": 862982096,
+        "augmentation": 1375300886,
+        "robust_model": 240002825,
+        "ramp_risk_model": 2747933288,
+        "local_calibrator": 176305035
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q3_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4579895,
+          "sha256": "5a1b2a43c91aa1519202c2676dc5a59e9ba24b1ae29b11607191bbb00d79e532"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "b12d34fa64010eac4378ba1133c12a1eb248af2dde850bca91437ae5d11e4779"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q3_2020_h1.csv",
+          "exists": true,
+          "bytes": 1547,
+          "sha256": "6dbf5ec6c235a997e640716c6f71e41d5a145d2219066ce4c74771df6e777dac"
+        }
+      ],
+      "train_ramp_prevalence": 0.0463,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q3_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "c0a24b43a534c0c93eac1ce6741d8ce4dae5f47d5978c81d829149aedfbdc6c5",
+      "seeds": {
+        "clean_model": 2050933367,
+        "lgbm_model": 392842233,
+        "augmentation": 2532020188,
+        "robust_model": 3754237386,
+        "ramp_risk_model": 4273314608,
+        "local_calibrator": 2664569163
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q3_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4581795,
+          "sha256": "b488b72d4874966bd683143ca1256adb221764ff4ac803bf3a429805ae2b8b61"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1054,
+          "sha256": "bf47f405d1efb1f1f96982c41cb1114e7540e7ce63598334d8f9348eef9555a4"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q3_2020_h4.csv",
+          "exists": true,
+          "bytes": 1456,
+          "sha256": "bebf1a6bdf14a9966a6b0189725903dd0b65c7600bf713aa7ce8d615474b6693"
+        }
+      ],
+      "train_ramp_prevalence": 0.0693,
+      "test_rows": 5888
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q4_2020",
+        "horizon_steps": 1
+      },
+      "marker_sha256": "982fc574cc3b6d5e8a7418647c7112deadd9dc2a043599056b6063fe3234ee4d",
+      "seeds": {
+        "clean_model": 163759525,
+        "lgbm_model": 1426964023,
+        "augmentation": 895128747,
+        "robust_model": 3577783430,
+        "ramp_risk_model": 1478628855,
+        "local_calibrator": 4085166113
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q4_2020_h1.pkl.gz",
+          "exists": true,
+          "bytes": 4168842,
+          "sha256": "503cb8e93c630955acea47b87cb3087a70a736b1ef02f6fd7445022b5986b7dd"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1053,
+          "sha256": "95dd49a247f0eff99ea0f6d5d792c36e1a3b6e1dd007e0ed0b6ce4a2e54f6a65"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q4_2020_h1.csv",
+          "exists": true,
+          "bytes": 1589,
+          "sha256": "ae54e8d67de624382b6b4445c1c7c7f2a7970e9fdb30a0d115a73747e9c139cf"
+        }
+      ],
+      "train_ramp_prevalence": 0.0396,
+      "test_rows": 5632
+    },
+    {
+      "job": {
+        "station": "CSGS8",
+        "fold": "q4_2020",
+        "horizon_steps": 4
+      },
+      "marker_sha256": "e8f94728c66fa7f58551458410a28fd671d9acb31b64e9545c21782614853cd0",
+      "seeds": {
+        "clean_model": 3758144420,
+        "lgbm_model": 2175934559,
+        "augmentation": 2632614989,
+        "robust_model": 961071309,
+        "ramp_risk_model": 3090670693,
+        "local_calibrator": 372259529
+      },
+      "artifacts": [
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/predictions_q4_2020_h4.pkl.gz",
+          "exists": true,
+          "bytes": 4166265,
+          "sha256": "1bb3aa80a33d0411d5ad14f568e691cbf17ca507b040971d94f16cc731b1a69c"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/run_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1045,
+          "sha256": "15020f43f5d3925cc87ea3bd5eecba4d5dda2d891c2b6d4b46943fb237cf6dfc"
+        },
+        {
+          "path": "work/results/stations/CSGS8/cache/chunks/calibration_q4_2020_h4.csv",
+          "exists": true,
+          "bytes": 1470,
+          "sha256": "3840470e70945692c268d751537e6ae47940f1e5965ac2a5ce7cc3239e0b71d3"
+        }
+      ],
+      "train_ramp_prevalence": 0.0652,
+      "test_rows": 5632
+    }
+  ],
+  "environment": {
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "matplotlib": "3.10.8",
+      "PyYAML": "6.0.3",
+      "lightgbm": "4.6.0",
+      "Pillow": "12.1.0",
+      "pytest": "9.0.2"
+    }
+  },
+  "scope": "Previously fitted artifacts hash-validated for no-refit downstream analysis; not a new full reproduction."
+}

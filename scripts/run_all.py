@@ -175,6 +175,8 @@ def main() -> None:
             ("specifications", "generate_specifications.py"),
             ("analysis", "analyze_results.py"),
             ("figures", "render_figures.py"),
+            ("output manifest", "update_output_manifest.py"),
+            ("scientific regression", "verify_results.py"),
         ):
             elapsed = run_checked(
                 [sys.executable, str(ROOT / "scripts" / script), "--config", args.config],

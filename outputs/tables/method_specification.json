@@ -15,7 +15,7 @@
       },
       {
         "path": "scripts/generate_specifications.py",
-        "sha256": "dea570f9a6d32f53c76661ea8ba8176c4ba75c3cd9476c32682c87e28a15a09d"
+        "sha256": "c42b99457972a9d7b2e91f0ed68a89762456d990aef1dd7c2fdfcb0b66b59a49"
       },
       {
         "path": "src/solar_reliability/advanced.py",
@@ -226,5 +226,83 @@
     "future ramp indicator or direction",
     "oracle ramp-group label",
     "test nonconformity score"
-  ]
+  ],
+  "reproduction_details": {
+    "shared_forecaster_scope": {
+      "shared": [
+        "robust_condition_cqr",
+        "robust_risk_mondrian",
+        "robust_local_cqr",
+        "robust_rolling_cqr",
+        "oracle_ramp_mondrian"
+      ],
+      "not_shared": [
+        "persistence_condition_cqr",
+        "lgbm_condition_cqr",
+        "clean_condition_cqr"
+      ],
+      "fit_unit": "one degradation-augmented ExtraTreesRegressor per station/fold/horizon",
+      "fit_cutoff": "purged training block only; no calibration or test fitting of base/risk model"
+    },
+    "base_interval": {
+      "construction": "numpy.quantile of the individual tree point predictions, not leaf-response quantiles",
+      "quantiles": [
+        0.05,
+        0.5,
+        0.95
+      ],
+      "numpy_quantile_method": "linear (locked NumPy default)",
+      "imputer": "training-fitted median; add_indicator=True; keep_empty_features=True",
+      "indicator_scope": "columns missing during imputer fitting; explicit family fractions also recomputed",
+      "n_estimators": 48,
+      "max_depth": 18,
+      "min_samples_leaf": 5,
+      "max_features": 0.8,
+      "bootstrap": true,
+      "max_samples": 0.75,
+      "max_train_rows": 10000,
+      "subsampling": "deterministic evenly spaced row indices using numpy.linspace, not random sampling",
+      "augmentation_fraction_total_across_degraded_conditions": 0.65,
+      "augmentation_partition": "one seeded permutation; selected rows partitioned across the four degraded conditions",
+      "ramp_weight": 2.5,
+      "degraded_weight_multiplier": 0.75,
+      "clipping": "base endpoints before scores and expanded endpoints to [0, capacity]"
+    },
+    "risk_model": {
+      "type": "ExtraTreesClassifier",
+      "training": "unaugmented subsampled purged training features",
+      "label": "abs(y[t+h]-y[t])/capacity >= nominal threshold for the horizon",
+      "imputer": "separate training-fitted median; add_indicator=True; keep_empty_features=True",
+      "n_estimators": 48,
+      "max_depth": 14,
+      "min_samples_leaf": 8,
+      "max_features": 0.8,
+      "bootstrap": true,
+      "max_samples": 0.75,
+      "class_weight": "balanced",
+      "probability": "class-1 probability from predict_proba; both classes verified in all 40 saved runs",
+      "seed": "job_seed_map(project seed, station, fold, horizon)[ramp_risk_model]",
+      "strata": "four quantile bins of pooled calibration risks across all five conditions",
+      "ties": "numpy.digitize(..., right=True); repeated edges may leave empty bins",
+      "shrinkage_k": 100.0,
+      "empty_bin_fallback": "condition-specific quantile (weight zero)"
+    },
+    "sensitivity_scope": {
+      "ramp": "post-run relabeling of saved nominal-threshold predictions using exact raw power differences",
+      "refitting": false,
+      "recalibration": false,
+      "unchanged": "ramp training weights, risk labels/model, calibrators, future-label reference, thresholds/gates",
+      "limitation": "not a comparison of pipelines retrained at alternative ramp definitions"
+    },
+    "coverage_denominators": {
+      "attempted": "target-evaluable saved prediction rows, including unavailable prediction tuples",
+      "issued": "rows with finite median, lower and upper",
+      "issued_coverage": "covered / issued; undefined when issued=0",
+      "service_coverage": "covered / attempted; unavailable attempts count as uncovered",
+      "width_and_interval_score": "issued predictions only",
+      "primary": "requires complete availability for baseline and three candidates",
+      "natural_missingness": "four primary methods; naturally missing features in clean-condition predictions only",
+      "exclusions": "missing current power or future target not included; no evidence on those origins"
+    }
+  }
 }

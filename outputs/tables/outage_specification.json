@@ -13,7 +13,7 @@
       },
       {
         "path": "scripts/generate_specifications.py",
-        "sha256": "dea570f9a6d32f53c76661ea8ba8176c4ba75c3cd9476c32682c87e28a15a09d"
+        "sha256": "c42b99457972a9d7b2e91f0ed68a89762456d990aef1dd7c2fdfcb0b66b59a49"
       },
       {
         "path": "src/solar_reliability/advanced.py",
